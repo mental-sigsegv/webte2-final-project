@@ -783,8 +783,8 @@
 </head>
 <body class="antialiased">
 <div
-    class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-    <div>
+    class="relative sm:flex sm:justify-center sm:items-center flex-col min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+    <div class="my-6">
         @push('scripts')
             <script>
                 function createUser() {
@@ -815,9 +815,11 @@
     </div>
 
 
-    @foreach(App\Models\User::all() as $user)
-        <p>{{ $user->name }}</p>
-    @endforeach
+    <div class="flex flex-col items-center mb-2">
+        @foreach(App\Models\User::all() as $user)
+            <p class="ml-2 text-gray-800 bg-zinc-300 py-2 px-4 my-1 w-full rounded">{{ $user->name }}</p>
+        @endforeach
+    </div>
 </div>
 </body>
 </html>
