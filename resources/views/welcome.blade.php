@@ -782,44 +782,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="antialiased">
-<div
-    class="relative sm:flex sm:justify-center sm:items-center flex-col min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-    <div class="my-6">
-        @push('scripts')
-            <script>
-                function createUser() {
-                    fetch('/create-user', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}' // Add CSRF token for Laravel
-                        }
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            alert(data.message);
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
-                }
-            </script>
-        @endpush
-
-        @stack('scripts')
-        <button
-            class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-            onclick="createUser()">
-            Create User
-        </button>
-    </div>
-
-
-    <div class="flex flex-col items-center mb-2">
-        @foreach(App\Models\User::all() as $user)
-            <p class="ml-2 text-gray-800 bg-zinc-300 py-2 px-4 my-1 w-full rounded">{{ $user->name }}</p>
-        @endforeach
-    </div>
-</div>
+    @livewire(\App\Livewire\Counter::class)
 </body>
 </html>

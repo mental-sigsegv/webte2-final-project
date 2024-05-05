@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Counter;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,3 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/create-user', [UserController::class, 'create']);
