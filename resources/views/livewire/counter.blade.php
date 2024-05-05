@@ -15,7 +15,7 @@
             </button>
 
 
-        @foreach ($users as $user)
+            @foreach ($users as $user)
                 <p wire:key="{{ $user->id }}" class="ml-2 text-gray-800 bg-zinc-300 py-2 px-4 my-1 w-full rounded">{{ $user->name }}</p>
             @endforeach
         </div>

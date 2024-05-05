@@ -19,3 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/qrcode', function () {
+    return view('qrcode');
+});

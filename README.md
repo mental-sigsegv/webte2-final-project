@@ -18,7 +18,7 @@ Create an online voting system application for use during lectures. Ensure a wel
     - [ ] Register
     - [ ] Change password
 
-- Roles
+- [ ] Roles
     - [ ] Unauthenticated user
     - [ ] Authenticated user
     - [ ] Admin
@@ -33,32 +33,96 @@ Create an online voting system application for use during lectures. Ensure a wel
 TODO
 ## Run Locally
 
-Clone the project
+- Install Ubuntu 22.04.3 LTS
 
+
+- Update ubuntu
 ```bash
-  git clone https://link-to-project
+  sudo apt-get update
 ```
 
-Go to the project directory
-
+- Download php8
 ```bash
-  cd my-project
+  sudo apt install php8.1-cli
+```
+```bash
+  sudo apt install php-curl -y
+```
+```bash
+  sudo apt install php-xml -y
+```
+```bash
+  sudo apt install php-zip -y
+```
+```bash
+  sudo apt install php-gd -y
 ```
 
-Install dependencies
+- Clone the project (you could use IDE / https clone / ssh clone)
 
 ```bash
-  npm install
+  git clone https://github.com/mental-sigsegv/webte2-final-project
 ```
 
-Start the server
+- Go to the project directory
 
 ```bash
-  npm run start
+  cd webte2
 ```
 
+- Checkout dev branch
 
-## API Reference
+```bash
+  git checkout dev
+```
+
+- Create .env file in root dir
+
+
+- Composer
+
+```bash
+  composer update
+```
+
+---
+
+
+## Docker
+
+ Setup Docker Alias
+
+```bash
+  sudo nano ~/.bashrc 
+```
+
+- Append to end of file
+> alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'" >> ~/.bashrc
+
+---
+
+Start Docker
+```bash
+  sail up -d
+```
+
+---
+
+Stop Docker
+```bash
+  sail down
+```
+
+Shell Docker
+```bash
+  sail shell
+```
+
+## Localhost
+[Localhost](http://localhost:8000)
+
+[phpMyAdmin](http://localhost:8080)
+
 
 #### Get all items
 
