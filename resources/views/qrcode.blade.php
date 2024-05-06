@@ -1,5 +1,5 @@
-<div>
+<x-layouts.app>
     <div>
         {!! QrCode::size(300)->generate('facebook.com') !!}
     </div>
-</div>
+</x-layouts.app>

@@ -70,6 +70,11 @@ TODO
   cd webte2
 ```
 
+- NPM
+```bash
+  sudo apt-get install npm 
+```
+
 - Checkout dev branch
 
 ```bash

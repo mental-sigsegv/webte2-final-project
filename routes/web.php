@@ -22,3 +22,37 @@ Route::get('/', function () {
 Route::get('/qrcode', function () {
     return view('qrcode');
 });
+
+Route::get('/login', function () {
+    return view();
+});
+
+Route::get('/reqister', function () {
+    return view();
+});
+
+Route::get('/reset_password', function () {
+    return view();
+});
+
+
+Route::get('/admin', function () {
+    return view();
+});
+
+Route::get('/question', function () {
+    return view();
+});
+
+
+Route::get('/question/{code}', function () {
+    return view();
+});
+
+Route::get('/question/{code}/result', function () {
+    return view();
+});
+
+Route::get('/manual', function () {
+    return view();
+});
