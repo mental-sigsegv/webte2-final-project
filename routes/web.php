@@ -28,8 +28,11 @@ Route::get('/login', function () {
 });
 
 Route::get('/register', function () {
-    return view('pages.coming-soon');
+    return view('pages.register');
 });
+
+Route::post('/register', [UserController::class, 'registerUser']);
+
 
 Route::get('/reset_password', function () {
     return view('pages.coming-soon');
