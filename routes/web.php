@@ -24,38 +24,38 @@ Route::get('/qrcode', function () {
 });
 
 Route::get('/login', function () {
-    return view();
+    return view('pages.coming-soon');
 });
 
-Route::get('/reqister', function () {
-    return view();
+Route::get('/register', function () {
+    return view('pages.coming-soon');
 });
 
 Route::get('/reset_password', function () {
-    return view();
+    return view('pages.coming-soon');
 });
 
 
 Route::get('/admin', function () {
-    return view();
+    return view('pages.coming-soon');
 });
 
 Route::get('/questions', function () {
-    return view();
+    return view('pages.coming-soon');
 });
 
 Route::get('/question/create', function () {
-    return view();
+    return view('pages.coming-soon');
 });
 
 Route::get('/question/{code}', function () {
-    return view();
+    return view('pages.coming-soon');
 });
 
 Route::get('/question/{code}/result', function () {
-    return view();
+    return view('pages.coming-soon');
 });
 
 Route::get('/manual', function () {
-    return view();
+    return view('pages.coming-soon');
 });
