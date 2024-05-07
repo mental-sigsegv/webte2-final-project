@@ -16,11 +16,11 @@ use App\Livewire\Counter;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.home');
 });
 
 Route::get('/qrcode', function () {
-    return view('qrcode');
+    return view('pages.qrcode');
 });
 
 Route::get('/login', function () {
@@ -40,10 +40,13 @@ Route::get('/admin', function () {
     return view();
 });
 
-Route::get('/question', function () {
+Route::get('/questions', function () {
     return view();
 });
 
+Route::get('/question/create', function () {
+    return view();
+});
 
 Route::get('/question/{code}', function () {
     return view();

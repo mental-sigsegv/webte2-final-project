@@ -14,9 +14,9 @@
         <title>{{ $title ?? 'Page Title' }}</title>
     </head>
     <body>
-        <x-nav>
+        <x-nav.nav>
 
-        </x-nav>
+        </x-nav.nav>
 
         <div class="m-3">
             {{ $slot }}

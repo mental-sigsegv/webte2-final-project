@@ -1,3 +1,3 @@
 <x-layouts.app title="Home">
-    @livewire(\App\Livewire\Counter::class)
+    <p>Hello World!</p>
 </x-layouts.app>
