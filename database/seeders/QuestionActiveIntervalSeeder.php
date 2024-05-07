@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class QuestionsSeeder extends Seeder
+class QuestionActiveIntervalSeeder extends Seeder
 {
     /**
      * Run the database seeds.

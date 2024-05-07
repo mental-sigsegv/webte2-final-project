@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('question_code')->constrained('questions');
             $table->timestamp('active_from');
             $table->timestamp('active_to');
+            $table->timestamps();
         });
     }
 

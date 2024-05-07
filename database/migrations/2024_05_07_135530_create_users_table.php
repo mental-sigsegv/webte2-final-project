@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('login')->unique();
             $table->string('password');
             $table->enum('role', ['Admin', 'User'])->default('User');
+            $table->timestamps();
         });
     }
 

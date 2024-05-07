@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('question');
             $table->boolean('active')->default(true);
             $table->boolean('open');
-
+            $table->timestamps();
         });
     }
 
