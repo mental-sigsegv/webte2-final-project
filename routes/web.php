@@ -25,7 +25,7 @@ Route::get('/qrcode', function () {
 });
 
 Route::get('/login', function () {
-    return view('pages.coming-soon');
+    return view('pages.login');
 });
 
 Route::get('/register', function () {
@@ -33,6 +33,8 @@ Route::get('/register', function () {
 });
 
 Route::post('/register', [UserController::class, 'registerUser']);
+
+Route::post('/login', [UserController::class, 'loginUser']);
 
 if (App::environment('local')) {
     Route::get('/token', [\App\Http\Controllers\TokenController::class, 'getToken']);

@@ -3,7 +3,13 @@
     <x-nav.nav-link href="/qrcode" :active="request()->is('qrcode')">QR Code</x-nav.nav-link>
     <x-nav.nav-link href="/question/create" :active="request()->is('question/create')">New Question</x-nav.nav-link>
     <x-nav.nav-link href="/manual" :active="request()->is('/manual')">Manual</x-nav.nav-link>
-    <x-nav.nav-link href="/admin" :active="request()->is('/admin')">Admin</x-nav.nav-link>
+
+    @auth
+        @if(auth()->user()->role === 'Admin')
+            <x-nav.nav-link href="/admin" :active="request()->is('/admin')">Admin</x-nav.nav-link>
+        @endif
+    @endauth
+
     <div style="margin-left: auto;">
         <x-nav.nav-link href="/login" :active="request()->is('/login')">Login</x-nav.nav-link>
         <x-nav.nav-link href="/register" :active="request()->is('/register')">Register</x-nav.nav-link>
