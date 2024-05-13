@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Counter;
 
@@ -32,6 +33,10 @@ Route::get('/register', function () {
 });
 
 Route::post('/register', [UserController::class, 'registerUser']);
+
+if (App::environment('local')) {
+    Route::get('/token', [\App\Http\Controllers\TokenController::class, 'getToken']);
+}
 
 
 Route::get('/reset_password', function () {
