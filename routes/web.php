@@ -40,6 +40,8 @@ Route::post('/login', [UserController::class, 'loginUser'])->name('login');
 Route::post('/question/create', [\App\Http\Controllers\QuestionController::class, 'createQuestion']);
 
 
+Route::get('/logout', [UserController::class, 'logoutUser']);
+
 if (App::environment('local')) {
     Route::get('/token', [\App\Http\Controllers\TokenController::class, 'getToken']);
 }

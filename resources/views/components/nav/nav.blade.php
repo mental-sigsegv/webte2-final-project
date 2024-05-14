@@ -14,6 +14,10 @@
     <div style="margin-left: auto;">
         <x-nav.nav-link href="/login" :active="request()->is('/login')">Login</x-nav.nav-link>
         <x-nav.nav-link href="/register" :active="request()->is('/register')">Register</x-nav.nav-link>
-        <x-nav.nav-link href="/reset_password" :active="request()->is('/reset_password')">Reset Password</x-nav.nav-link>
+
+        @auth
+            <x-nav.nav-link href="/logout" :active="request()->is('/logout')">Logout</x-nav.nav-link>
+            <x-nav.nav-link href="/reset_password" :active="request()->is('/reset_password')">Reset Password</x-nav.nav-link>
+        @endauth
     </div>
 </div>
