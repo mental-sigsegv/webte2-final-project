@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Example
 Route::get('/user', function (Request $request) {
-    return response()->json(['User' => \App\Models\User::all()->first()]);
+    return response()->json(['User' => \App\Models\User::first()]);
 });

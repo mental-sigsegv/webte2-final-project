@@ -1,8 +1,8 @@
 <?php
 
-return [
-    'permissions' => [
-        'ADMIN' => 'Admin',
-        'USER' => 'User',
-    ]
-];
+namespace App\Enums;
+
+enum Permissions: string {
+    case Admin = 'Admin';
+    case User = 'User';
+}

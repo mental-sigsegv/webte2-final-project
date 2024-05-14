@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Permissions;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,19 +15,18 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        $hashedPassword = Hash::make('password');
-        User::factory()->create([
+        User::create([
             'name' => 'Admin User',
             'login' => 'admin',
-            'password' => $hashedPassword,
-            'role' => 'Admin',
+            'password' => 'password',
+            'role' => Permissions::Admin,
         ]);
 
-        User::factory()->create([
+        User::create([
             'name' => 'User',
             'login' => 'user',
             'password' => 'password',
-            'role' => 'User',
+            'role' => Permissions::User,
         ]);
     }
 }

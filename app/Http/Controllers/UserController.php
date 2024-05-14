@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    use Authenticatable;
     public function registerUser(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -20,14 +19,10 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 422);
-        }
-
-        User::factory()->create([
+        User::create([
             'name' => $request->name,
             'login' => $request->login,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
         ]);
 
         return redirect('/login');
@@ -42,7 +37,6 @@ class UserController extends Controller
 
             return redirect()->intended('/');
         }
-
         return back()->withErrors(['login' => 'Invalid login or password']); // Redirect back with error message
     }
 

@@ -1,8 +1,6 @@
 <x-layouts.app title="Home">
     <p>Hello World!</p>
-    {{ auth()->user() }}
-
-    {{ Auth::user() }}
-
-    {{ Auth::check() }}
+    @if(Auth::check())
+        Logged in as {{ auth()->user()->name }}
+    @endif
 </x-layouts.app>
