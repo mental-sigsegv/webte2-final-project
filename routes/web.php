@@ -37,6 +37,8 @@ Route::post('/register', [UserController::class, 'registerUser']);
 
 Route::post('/login', [UserController::class, 'loginUser']);
 
+Route::get('/logout', [UserController::class, 'logoutUser']);
+
 if (App::environment('local')) {
     Route::get('/token', [\App\Http\Controllers\TokenController::class, 'getToken']);
 }

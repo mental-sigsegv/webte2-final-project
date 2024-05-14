@@ -28,6 +28,12 @@ class UserController extends Controller
         return redirect('/login');
     }
 
+    public function logoutUser(Request $request) {
+        auth()->logout();
+
+        return redirect()->intended();
+    }
+
     public function loginUser(Request $request)
     {
         $credentials = $request->only('login', 'password');
