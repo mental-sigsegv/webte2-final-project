@@ -35,7 +35,10 @@ Route::get('/register', function () {
 
 Route::post('/register', [UserController::class, 'registerUser']);
 
-Route::post('/login', [UserController::class, 'loginUser']);
+Route::post('/login', [UserController::class, 'loginUser'])->name('login');
+
+Route::post('/question/create', [\App\Http\Controllers\QuestionController::class, 'createQuestion']);
+
 
 if (App::environment('local')) {
     Route::get('/token', [\App\Http\Controllers\TokenController::class, 'getToken']);
@@ -56,8 +59,8 @@ Route::get('/questions', function () {
 });
 
 Route::get('/question/create', function () {
-    return view('pages.coming-soon');
-});
+    return view('pages.create-question');
+})->middleware(\App\Http\Middleware\Authenticate::class);;
 
 Route::get('/question/{code}', function () {
     return view('pages.coming-soon');
