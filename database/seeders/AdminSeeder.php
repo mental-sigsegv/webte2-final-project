@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\Permissions;
+use App\Enums\Roles;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,14 +19,14 @@ class AdminSeeder extends Seeder
             'name' => 'Admin User',
             'login' => 'admin',
             'password' => 'password',
-            'role' => Permissions::Admin,
+            'role' => Roles::Admin,
         ]);
 
         User::create([
             'name' => 'User',
             'login' => 'user',
             'password' => 'password',
-            'role' => Permissions::User,
+            'role' => Roles::User,
         ]);
     }
 }

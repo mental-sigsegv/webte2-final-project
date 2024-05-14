@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\Permissions;
+use App\Enums\Roles;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('login')->unique();
             $table->string('password', 60);
-            $table->enum('role', array_column(Permissions::cases(), 'value'))->default(Permissions::User);
+            $table->enum('role', array_column(Roles::cases(), 'value'))->default(Roles::User->value);
             $table->rememberToken();
             $table->timestamps();
         });

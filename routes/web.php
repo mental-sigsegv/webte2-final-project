@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Counter;
@@ -48,7 +49,7 @@ Route::get('/reset_password', function () {
 
 Route::get('/admin', function () {
     return view('pages.coming-soon');
-});
+})->middleware(Admin::class);
 
 Route::get('/questions', function () {
     return view('pages.coming-soon');
