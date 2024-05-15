@@ -74,9 +74,7 @@ class QuestionForm extends Component
     // TODO FIX
     public function removeOptionById($id): void
     {
-        $this->options = array_filter($this->options, function($option) use ($id) {
-            return $option !== $id;
-        });
+        unset($this->options[$id]);
     }
 
 

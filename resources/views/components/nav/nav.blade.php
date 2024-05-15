@@ -7,7 +7,7 @@
 
 
     @auth
-        <x-nav.nav-link href="/questions" :active="request()->is('/questions')">Questions</x-nav.nav-link>
+        <x-nav.nav-link href="/questions" :active="request()->is('questions')">Questions</x-nav.nav-link>
         <x-nav.nav-link href="/question/create" :active="request()->is('question/create')">New Question</x-nav.nav-link>
         @if(auth()->user()->role === 'Admin')
             <x-nav.nav-link href="/admin" :active="request()->is('admin')">Admin</x-nav.nav-link>

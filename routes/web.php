@@ -51,8 +51,6 @@ Route::post('/register', [UserController::class, 'registerUser']);
 
 Route::post('/login', [UserController::class, 'loginUser'])->name('login');
 
-Route::post('/question/create', [QuestionController::class, 'createQuestion']);
-
 Route::get('/logout', [UserController::class, 'logoutUser']);
 
 if (App::environment('local')) {
