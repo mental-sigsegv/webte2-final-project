@@ -73,6 +73,15 @@ Route::get('/question/create', function () {
     return view('pages.create-question');
 })->middleware('auth');;
 
+Route::delete('/questions/delete/{questionId}',
+    [QuestionController::class, 'deleteQuestion'])
+    ->name('questions.delete');
+
+Route::patch('/questions/update/{questionId}',
+    [QuestionController::class, 'updateQuestion'])
+    ->name('questions.update');
+
+
 Route::get('/question/{code}', function () {
     return view('pages.coming-soon');
 });

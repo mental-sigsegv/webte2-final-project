@@ -23,6 +23,20 @@
                 <td>{{ $data->active == 1 ? 'Yes' : 'No' }}</td>
                 <td>{{ $data->open == 1 ? 'Yes' : 'No'  }}</td>
                 <td>{{ $data->subjectName }}</td>
+                <td>
+                    <form method="POST" action="{{ route('questions.delete', ['questionId' => $data->id]) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="POST" action="{{ route('questions.update', ['questionId' => $data->id]) }}">
+                        @csrf
+                        @method('PATCH')
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </tbody>
