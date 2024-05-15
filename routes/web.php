@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    return view('test');
+    return view('pages.coming-soon');
 });
 
 Route::get('/qrcode', function () {
@@ -53,19 +53,15 @@ Route::post('/login', [UserController::class, 'loginUser'])->name('login');
 
 Route::post('/question/create', [QuestionController::class, 'createQuestion']);
 
-
 Route::get('/logout', [UserController::class, 'logoutUser']);
 
 if (App::environment('local')) {
     Route::get('/token', [TokenController::class, 'getToken']);
 }
 
-
 Route::get('/reset_password', function () {
     return view('pages.coming-soon');
 });
-
-
 
 Route::middleware(['auth', Admin::class])->get('/admin', function () {
     return view('pages.admin');

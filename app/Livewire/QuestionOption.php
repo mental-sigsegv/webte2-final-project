@@ -6,16 +6,23 @@ use Livewire\Component;
 
 class QuestionOption extends Component
 {
-    public $optionId;
+    public $id;
 
-    public function mount($key)
+    public $value;
+
+    public function mount($id): void
     {
-        $this->optionId = $key;
+        $this->id = $id;
     }
 
-    public function remove()
+    public function updateValue(): void
     {
-        $this->dispatch('removeOption', $this->optionId);
+        $this->dispatch('updateOption', ['id' => $this->id, 'value' => $this->value]);
+    }
+
+    public function remove(): void
+    {
+        $this->dispatch('removeOption', $this->id);
     }
 
 
