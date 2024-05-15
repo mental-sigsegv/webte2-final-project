@@ -23,15 +23,27 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
+Route::get('/test', function () {
+    return view('test');
+});
+
 Route::get('/qrcode', function () {
     return view('pages.qrcode');
 })->middleware(\App\Http\Middleware\Authenticate::class);
 
 Route::get('/login', function () {
+    if (auth()->check()) {
+        return redirect()->intended();
+    }
+
     return view('pages.login');
 })->name('login');
 
 Route::get('/register', function () {
+    if (auth()->check()) {
+        return redirect()->intended();
+    }
+
     return view('pages.register');
 });
 
@@ -56,7 +68,7 @@ Route::get('/reset_password', function () {
 
 
 Route::middleware(['auth', Admin::class])->get('/admin', function () {
-    return view('pages.coming-soon');
+    return view('pages.admin');
 });
 
 Route::get('/questions', function () {
