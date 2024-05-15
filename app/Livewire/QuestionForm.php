@@ -71,7 +71,7 @@ class QuestionForm extends Component
         $this->options[$data['id']]['data']['correct'] = $data['data']['correct'] ?? false;
     }
 
-    // TODO FIX
+
     public function removeOptionById($id): void
     {
         unset($this->options[$id]);
