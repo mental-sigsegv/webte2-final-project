@@ -14,17 +14,20 @@
                    placeholder="Question" required="">
         </div>
         <div>
-            <input type="radio" id="open" wire:model="question_type" value=1>
+            <input type="radio" id="open" wire:change="changeCheckbox" wire:model="question_type" value=1>
             <label for="open">Open</label><br>
-            <input type="radio" id="close" wire:model="question_type" value=0>
+            <input type="radio" id="close" wire:change="changeCheckbox" wire:model="question_type" value=0>
             <label for="close">Close</label><br>
         </div>
 
-        <button type="button" wire:click="addOption">Add</button>
 
-        @foreach($options as $id => $value)
-            @livewire('question-option', ['id' => $id, key($id)])
-        @endforeach
+        @if(!$question_type)
+            <button type="button" wire:click="addOption">Add</button>
+
+            @foreach($options as $id => $value)
+                @livewire('question-option', ['id' => $id, key($id)])
+            @endforeach
+        @endif
 
         <button type="submit">Save</button>
     </form>

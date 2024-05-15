@@ -18,7 +18,7 @@ class QuestionForm extends Component
     #[Validate('required')]
     public $question = '';
     #[Validate('required')]
-    public $question_type = '';
+    public $question_type = true;
 
     #[Validate('required')]
     public $options = [];
@@ -53,6 +53,11 @@ class QuestionForm extends Component
 
     public function addOption() : void {
         $this->options[] = ['id' => uniqid(), 'data' => ['value' => '', 'correct' => false]];
+    }
+    public function changeCheckbox() : void {
+        if ($this->question_type) {
+            $this->options = [];
+        }
     }
 
     protected $listeners = [
