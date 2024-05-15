@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\TokenController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Counter;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +25,11 @@ Route::get('/', function () {
 
 Route::get('/qrcode', function () {
     return view('pages.qrcode');
-});
+})->middleware(\App\Http\Middleware\Authenticate::class);
 
 Route::get('/login', function () {
     return view('pages.login');
-});
+})->name('login');
 
 Route::get('/register', function () {
     return view('pages.register');
@@ -37,13 +39,13 @@ Route::post('/register', [UserController::class, 'registerUser']);
 
 Route::post('/login', [UserController::class, 'loginUser'])->name('login');
 
-Route::post('/question/create', [\App\Http\Controllers\QuestionController::class, 'createQuestion']);
+Route::post('/question/create', [QuestionController::class, 'createQuestion']);
 
 
 Route::get('/logout', [UserController::class, 'logoutUser']);
 
 if (App::environment('local')) {
-    Route::get('/token', [\App\Http\Controllers\TokenController::class, 'getToken']);
+    Route::get('/token', [TokenController::class, 'getToken']);
 }
 
 
@@ -52,9 +54,10 @@ Route::get('/reset_password', function () {
 });
 
 
-Route::get('/admin', function () {
+
+Route::middleware(['auth', Admin::class])->get('/admin', function () {
     return view('pages.coming-soon');
-})->middleware(Admin::class);
+});
 
 Route::get('/questions', function () {
     return view('pages.coming-soon');
@@ -62,7 +65,7 @@ Route::get('/questions', function () {
 
 Route::get('/question/create', function () {
     return view('pages.create-question');
-})->middleware(\App\Http\Middleware\Authenticate::class);;
+})->middleware('auth');;
 
 Route::get('/question/{code}', function () {
     return view('pages.coming-soon');
