@@ -67,9 +67,7 @@ Route::middleware(['auth', Admin::class])->get('/admin', function () {
     return view('pages.admin');
 });
 
-Route::get('/questions', function () {
-    return view('pages.coming-soon');
-});
+Route::get('/questions', [QuestionController::class, 'show']);
 
 Route::get('/question/create', function () {
     return view('pages.create-question');
