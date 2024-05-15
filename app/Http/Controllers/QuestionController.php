@@ -10,6 +10,7 @@ class QuestionController extends Controller
 {
     public function createQuestion(Request $request)
     {
+        dd($request);
         $subject = Subject::create([
             'name' => $request->subject,
         ]);
@@ -25,4 +26,6 @@ class QuestionController extends Controller
 
         return redirect('/');
     }
+
+
 }
