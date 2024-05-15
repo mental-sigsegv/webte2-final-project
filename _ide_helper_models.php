@@ -17,18 +17,42 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $question_code
+ * @property string $answer
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Database\Factories\AnswerFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Answer newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Answer newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Answer query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Answer whereAnswer($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Answer whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Answer whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Answer whereQuestionCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Answer whereUpdatedAt($value)
  */
 	class Answer extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $question_id
+ * @property string $option
+ * @property int $correct
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Option newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Option newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Option query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Option whereCorrect($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Option whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Option whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Option whereOption($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Option whereQuestionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Option whereUpdatedAt($value)
+ */
+	class Option extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -44,7 +68,6 @@ namespace App\Models{
  * @property int $open
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Database\Factories\QuestionFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Question newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Question newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Question query()
@@ -71,7 +94,6 @@ namespace App\Models{
  * @property string $active_to
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Database\Factories\QuestionActiveIntervalFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|QuestionActiveInterval newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|QuestionActiveInterval newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|QuestionActiveInterval query()
@@ -93,7 +115,6 @@ namespace App\Models{
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Database\Factories\SubjectFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Subject newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Subject newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Subject query()

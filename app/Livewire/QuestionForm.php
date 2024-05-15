@@ -26,7 +26,6 @@ class QuestionForm extends Component
     #[NoReturn] public function save(): void
     {
 
-
         $subject = Subject::create([
             'name' => $this->subject,
         ]);
@@ -38,11 +37,13 @@ class QuestionForm extends Component
             'question' => $this->question,
             'open' => $this->question_type,
         ]);
-        foreach ($this->options as $key => $value) {
+
+
+        foreach ($this->options as $option) {
             Option::create([
                 'question_id' => $question->id,
-                'option' => $value,
-                'correct' => false, // Assuming you have a correct field to indicate the correct answer
+                'option' => $option['data']['value'],
+                'correct' => $option['data']['correct'], // Assuming you have a correct field to indicate the correct answer
             ]);
         }
 
@@ -51,7 +52,7 @@ class QuestionForm extends Component
     }
 
     public function addOption() : void {
-        $this->options[] = ['id' => uniqid(), 'value' => ''];
+        $this->options[] = ['id' => uniqid(), 'data' => ['value' => '', 'correct' => false]];
     }
 
     protected $listeners = [
@@ -61,7 +62,8 @@ class QuestionForm extends Component
 
     public function updateOptionValue($data): void
     {
-        $this->options[$data['id']] = $data['value'];
+        $this->options[$data['id']]['data']['value'] = $data['data']['value'];
+        $this->options[$data['id']]['data']['correct'] = $data['data']['correct'] ?? false;
     }
 
     // TODO FIX
