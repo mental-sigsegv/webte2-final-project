@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Option;
 use App\Models\Question;
 use App\Models\Subject;
 use Illuminate\Support\Facades\Http;
@@ -24,17 +25,26 @@ class QuestionForm extends Component
 
     #[NoReturn] public function save(): void
     {
+
+
         $subject = Subject::create([
             'name' => $this->subject,
         ]);
 
-        Question::create([
+        $question = Question::create([
             'code' => fake()->unique()->regexify('[A-Za-z0-9]{5}'),
             'user_id' => auth()->id(),
             'subject_id' => $subject->id,
             'question' => $this->question,
             'open' => $this->question_type,
         ]);
+        foreach ($this->options as $key => $value) {
+            Option::create([
+                'question_id' => $question->id,
+                'option' => $value,
+                'correct' => false, // Assuming you have a correct field to indicate the correct answer
+            ]);
+        }
 
 
         redirect('/');
