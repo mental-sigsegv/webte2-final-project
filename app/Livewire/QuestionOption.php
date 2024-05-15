@@ -10,6 +10,8 @@ class QuestionOption extends Component
 
     public $value;
 
+    public $correct;
+
     public function mount($id): void
     {
         $this->id = $id;
@@ -17,7 +19,13 @@ class QuestionOption extends Component
 
     public function updateValue(): void
     {
-        $this->dispatch('updateOption', ['id' => $this->id, 'value' => $this->value]);
+        $this->dispatch('updateOption', [
+            'id' => $this->id,
+            'data' => [
+                'value' => $this->value,
+                'correct' => $this->correct
+            ]
+        ]);
     }
 
     public function remove(): void
