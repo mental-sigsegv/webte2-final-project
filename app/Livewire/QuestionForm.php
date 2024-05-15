@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Option;
 use App\Models\Question;
 use App\Models\Subject;
 use Illuminate\Support\Facades\Http;
@@ -17,18 +18,19 @@ class QuestionForm extends Component
     #[Validate('required')]
     public $question = '';
     #[Validate('required')]
-    public $question_type = '';
+    public $question_type = true;
 
     #[Validate('required')]
     public $options = [];
 
     #[NoReturn] public function save(): void
     {
+
         $subject = Subject::create([
             'name' => $this->subject,
         ]);
 
-        Question::create([
+        $question = Question::create([
             'code' => fake()->unique()->regexify('[A-Za-z0-9]{5}'),
             'user_id' => auth()->id(),
             'subject_id' => $subject->id,
@@ -37,11 +39,25 @@ class QuestionForm extends Component
         ]);
 
 
+        foreach ($this->options as $option) {
+            Option::create([
+                'question_id' => $question->id,
+                'option' => $option['data']['value'],
+                'correct' => $option['data']['correct'], // Assuming you have a correct field to indicate the correct answer
+            ]);
+        }
+
+
         redirect('/');
     }
 
     public function addOption() : void {
-        $this->options[] = ['id' => uniqid(), 'value' => ''];
+        $this->options[] = ['id' => uniqid(), 'data' => ['value' => '', 'correct' => false]];
+    }
+    public function changeCheckbox() : void {
+        if ($this->question_type) {
+            $this->options = [];
+        }
     }
 
     protected $listeners = [
@@ -51,7 +67,8 @@ class QuestionForm extends Component
 
     public function updateOptionValue($data): void
     {
-        $this->options[$data['id']] = $data['value'];
+        $this->options[$data['id']]['data']['value'] = $data['data']['value'];
+        $this->options[$data['id']]['data']['correct'] = $data['data']['correct'] ?? false;
     }
 
     // TODO FIX
