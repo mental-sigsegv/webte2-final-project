@@ -110,4 +110,14 @@ class QuestionController extends Controller
 
         return $data;
     }
+
+    public function setActive($questionId)
+    {
+        $question = Question::findOrFail($questionId);
+        $question->active = !$question->active;
+        $question->save();
+
+        return back()->with('success', 'Question status updated successfully.');
+    }
+
 }
