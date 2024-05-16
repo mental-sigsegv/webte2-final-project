@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('question_active_intervals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('question_code')->constrained('questions');
-            $table->timestamp('active_from');
-            $table->timestamp('active_to');
+            $table->foreignId('question_id')->nullable(false)->constrained('questions');
+            $table->timestamp('active_from')->nullable(false);
+            $table->timestamp('active_to')->nullable();
             $table->timestamps();
         });
     }

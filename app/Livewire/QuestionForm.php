@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Option;
 use App\Models\Question;
+use App\Models\QuestionActiveInterval;
 use App\Models\Subject;
 use Illuminate\Support\Facades\Http;
 use JetBrains\PhpStorm\NoReturn;
@@ -38,6 +39,10 @@ class QuestionForm extends Component
             'open' => $this->question_type,
         ]);
 
+        QuestionActiveInterval::create([
+            'question_id' => $question->id,
+            'active_from' => $question->created_at,
+        ]);
 
         foreach ($this->options as $option) {
             Option::create([
@@ -46,6 +51,7 @@ class QuestionForm extends Component
                 'correct' => $option['data']['correct'], // Assuming you have a correct field to indicate the correct answer
             ]);
         }
+
 
 
         redirect('/');
