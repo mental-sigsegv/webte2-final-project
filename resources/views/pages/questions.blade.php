@@ -15,25 +15,25 @@
             </tr>
             </thead>
             <tbody>
-            @foreach ($questionsData as $data)
+            @foreach ($questions as $question)
                 <tr class="border-b bg-white even:bg-gray-100">
-                    <td class="px-4 py-2">{{ $data->name }}</td>
-                    <td class="px-4 py-2">{{ $data->code }}</td>
-                    <td class="px-4 py-2">{{ $data->question }}</td>
-                    <td class="px-4 py-2">{{ $data->created_at }}</td>
-                    <td class="px-4 py-2">{{ $data->updated_at }}</td>
+                    <td class="px-4 py-2">{{ $question->user->name }}</td>
+                    <td class="px-4 py-2">{{ $question->code }}</td>
+                    <td class="px-4 py-2">{{ $question->question }}</td>
+                    <td class="px-4 py-2">{{ $question->created_at }}</td>
+                    <td class="px-4 py-2">{{ $question->updated_at }}</td>
                     <td class="px-4 py-2">
                         <select name="active">
                             <option
-                                value="1" {{ $data->active == 1 ? 'selected' : '' }}>{{ __('question.yes') }}</option>
+                                value="1" {{ $question->active == 1 ? 'selected' : '' }}>{{ __('question.yes') }}</option>
                             <option
-                                value="0" {{ $data->active == 0 ? 'selected' : '' }}>{{ __('question.no') }}</option>
+                                value="0" {{ $question->active == 0 ? 'selected' : '' }}>{{ __('question.no') }}</option>
                         </select>
                     </td>
-                    <td class="px-4 py-2">{{ $data->open == 1 ? __('question.yes') : __('question.no')  }}</td>
-                    <td class="px-4 py-2">{{ $data->subjectName }}</td>
+                    <td class="px-4 py-2">{{ $question->open == 1 ? __('question.yes') : __('question.no')  }}</td>
+                    <td class="px-4 py-2">{{ $question->subject->name}}</td>
                     <td class="px-4 py-2 flex space-x-2">
-                        <form method="POST" action="{{ route('questions.delete', ['questionId' => $data->id]) }}">
+                        <form method="POST" action="{{ route('questions.delete', ['questionId' => $question->id]) }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-700">
@@ -44,10 +44,10 @@
                                 </svg>
                             </button>
                         </form>
-                        <form method="POST" action="{{ route('questions.update', ['questionId' => $data->id]) }}">
+                        <form method="POST" action="{{ route('questions.update', ['questionId' => $question->id]) }}">
                             @csrf
                             @method('PATCH')
-                            <input type="hidden" name="active" id="active" value="{{ $data->active }}">
+                            <input type="hidden" name="active" id="active" value="{{ $question->active }}">
                             <button type="submit" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-700">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                      stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

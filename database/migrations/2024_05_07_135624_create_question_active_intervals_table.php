@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('question_active_intervals', function (Blueprint $table) {
             $table->id();
             $table->string('question_code',5);
-            $table->foreign('question_code')->references('code')->on('questions');
+            $table->foreign('question_code')->references('code')->on('questions')->onDelete('cascade');
             $table->timestamp('active_from')->nullable(false);
             $table->timestamp('active_to')->nullable();
             $table->timestamps();
