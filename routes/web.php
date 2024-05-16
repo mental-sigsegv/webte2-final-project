@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\UserController;
@@ -91,3 +92,5 @@ Route::get('/question/{code}/result', function () {
 Route::get('/manual', function () {
     return view('pages.coming-soon');
 });
+
+Route::get('/change-language/{language}', [LanguageController::class, 'changeLanguage'])->name('change-language');

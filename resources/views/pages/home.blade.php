@@ -1,6 +1,25 @@
+<?php
+    use Illuminate\Support\Facades\App;
+?>
+
 <x-layouts.app title="Home">
     <p>Hello World!</p>
     @if(auth()->check())
         Logged in as {{ auth()->user()->name }}
     @endif
+
+    <div>
+        <p>
+            Locale: {{ App::currentLocale() }}
+        </p>
+        <p>
+            {{ __('message.welcome') }}
+        </p>
+
+        <button onclick="{{ session(['lacel' => 'sk']) }}">
+            Change Language EN
+        </button>
+    </div>
+
+
 </x-layouts.app>

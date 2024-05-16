@@ -25,4 +25,8 @@
             <x-nav.nav-link href="/reset_password" :active="request()->is('reset_password')">Reset Password</x-nav.nav-link>
         @endauth
     </div>
+
+    <div>
+        @include('components.nav.language-switcher')
+    </div>
 </div>
