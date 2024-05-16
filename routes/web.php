@@ -82,13 +82,9 @@ Route::patch('/questions/update/{questionId}',
     [QuestionController::class, 'updateQuestion'])
     ->name('questions.update');
 
-
 Route::get('/question/{code}', function () {
     return view('pages.coming-soon');
-});
-Route::get('/question/{code}', function () {
-    return view('pages.coming-soon');
-});
+})->name('question');
 
 Route::get('/question/{code}/result', function () {
     return view('pages.coming-soon');
