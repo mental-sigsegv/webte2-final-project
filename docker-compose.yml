@@ -50,6 +50,7 @@ services:
             retries: 3
             timeout: 5s
     phpmyadmin:
+        platform: linux/x86_64
         container_name: webte2-phpmyadmin
         image: phpmyadmin/phpmyadmin
         links:
