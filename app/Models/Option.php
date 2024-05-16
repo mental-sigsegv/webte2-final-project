@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Option extends Model
 {
     protected $fillable = [
-        'question_id',
+        'question_code',
         'option',
         'correct'
     ];

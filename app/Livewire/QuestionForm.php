@@ -40,13 +40,13 @@ class QuestionForm extends Component
         ]);
 
         QuestionActiveInterval::create([
-            'question_id' => $question->id,
+            'question_code' => $question->code,
             'active_from' => $question->created_at,
         ]);
 
         foreach ($this->options as $option) {
             Option::create([
-                'question_id' => $question->id,
+                'question_code' => $question->code,
                 'option' => $option['data']['value'],
                 'correct' => $option['data']['correct'], // Assuming you have a correct field to indicate the correct answer
             ]);

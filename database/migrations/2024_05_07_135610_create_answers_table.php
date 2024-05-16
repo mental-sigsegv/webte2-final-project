@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('question_code')->constrained('questions');
+            $table->string('question_code',5);
+            $table->foreign('question_code')->references('code')->on('questions');
             $table->string('answer');
             $table->timestamps();
         });

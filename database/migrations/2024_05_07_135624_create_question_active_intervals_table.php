@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('question_active_intervals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('question_id')->nullable(false)->constrained('questions');
+            $table->string('question_code',5);
+            $table->foreign('question_code')->references('code')->on('questions');
             $table->timestamp('active_from')->nullable(false);
             $table->timestamp('active_to')->nullable();
             $table->timestamps();
