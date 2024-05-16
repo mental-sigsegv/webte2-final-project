@@ -54,6 +54,8 @@ Route::post('/login', [UserController::class, 'loginUser'])->name('login');
 
 Route::get('/logout', [UserController::class, 'logoutUser']);
 
+Route::post('/questions/{id}/setActive', [QuestionController::class, 'setActive'])->name('questions.setActive');
+
 if (App::environment('local')) {
     Route::get('/token', [TokenController::class, 'getToken']);
 }
@@ -81,6 +83,9 @@ Route::patch('/questions/update/{questionId}',
     ->name('questions.update');
 
 
+Route::get('/question/{code}', function () {
+    return view('pages.coming-soon');
+});
 Route::get('/question/{code}', function () {
     return view('pages.coming-soon');
 });
