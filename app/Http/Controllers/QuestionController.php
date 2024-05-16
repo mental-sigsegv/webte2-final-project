@@ -62,32 +62,24 @@ class QuestionController extends Controller
 
     public function updateQuestion(Request $request, $questionId)
     {
-        if (Auth::check()) {
             $user = Auth::user();
             $userId = $user->id;
-
             $userRole = DB::table('users')->where('id', $userId)->value('role');
+            $question = Question::find($questionId);
 
-            if ($userRole === 'Admin') {
-                // If the user is an admin, update the question directly
-                $question = Question::find($questionId);
+            if ($question) {
+                if ($userRole === 'Admin' || $question->user_id === $userId) {
+                    $question->active = $request->input('active');
+                    $question->save();
 
-                if ($question) {
-                    // Update the question with the request data
-                    $question->update($request->all());
                     return redirect()->back()->with('success', 'Question updated successfully.');
                 } else {
-                    return redirect()->back()->with('error', 'Question not found.');
+                    return redirect()->back()->with('error', 'You do not have permission to update this question.');
                 }
             } else {
-                // If the user is not an admin, return an error
-                return redirect()->back()->with('error', 'You do not have permission to update questions.');
+                return redirect()->back()->with('error', 'Question not found.');
             }
-        } else {
-            // If the user is not logged in, redirect them
-            return redirect()->route('login');
         }
-    }
 
     private function getAllDataAboutQuestions($whereClause)
     {
