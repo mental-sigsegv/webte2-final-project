@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\TokenController;
@@ -82,9 +83,9 @@ Route::patch('/questions/update/{questionId}',
     [QuestionController::class, 'updateQuestion'])
     ->name('questions.update');
 
-Route::get('/question/{code}', function () {
-    return view('pages.coming-soon');
-})->name('question');
+Route::get('/question/{code}',
+    [AnswerController::class, 'view'])
+    ->name('question');
 
 Route::get('/question/{code}/result', function () {
     return view('pages.coming-soon');

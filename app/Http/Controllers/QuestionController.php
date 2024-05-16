@@ -35,7 +35,7 @@ class QuestionController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $userId = $user->id;
-            $userRole = DB::table('users')->where('id', $userId)->value('role');
+            $userRole = $user->role;
 
             if ($userRole == 'Admin') {
                 $whereClause = '1=1';
