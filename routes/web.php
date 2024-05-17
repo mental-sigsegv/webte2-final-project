@@ -25,9 +25,9 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
-Route::get('/test', function () {
-    return view('pages.coming-soon');
-});
+//Route::get('/test', function () {
+//    return view('test');
+//});
 
 Route::get('/qrcode', function () {
     return view('pages.qrcode');
