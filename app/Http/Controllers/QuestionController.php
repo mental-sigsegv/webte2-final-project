@@ -85,4 +85,10 @@ class QuestionController extends Controller
         return back()->with('success', 'Question status updated successfully.');
     }
 
+    public function viewAnswers($code)
+    {
+        $question = Question::with('answers')->where('code', $code)->firstOrFail();
+        return view('pages.answers', ['question' => $question]);
+    }
+
 }
