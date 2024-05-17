@@ -19,7 +19,7 @@ jobs:
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           username: 'xklacikm'
-          server: ${{ secrets.FTP_HOST }}
+          server: '147.175.105.58'
           password: ${{ secrets.FTP_PASSWORD }}
           sftp_only: true
           remote_path: '/var/www/node58.webte.fei.stuba.sk/webte2-final-project'
