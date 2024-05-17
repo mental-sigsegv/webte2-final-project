@@ -23,4 +23,3 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           sftp_only: true
           remote_path: '/var/www/node58.webte.fei.stuba.sk/webte2-final-project'
-          sftpArgs: '-o ConnectTimeout=5'
