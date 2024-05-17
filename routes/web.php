@@ -87,9 +87,10 @@ Route::get('/question/{code}',
     [AnswerController::class, 'view'])
     ->name('question');
 
-Route::get('/question/{code}/result', function () {
-    return view('pages.coming-soon');
-});
+Route::get('/question/{code}/result',
+    [QuestionController::class, 'viewAnswers'])
+    ->name('answers');
+
 
 Route::get('/manual', function () {
     return view('pages.coming-soon');

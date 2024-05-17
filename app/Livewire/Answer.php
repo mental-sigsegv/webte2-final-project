@@ -19,7 +19,6 @@ class Answer extends Component
     {
         $this->code = $code;
     }
-
     public function submitAnswer()
     {
         $this->validate();
@@ -29,8 +28,7 @@ class Answer extends Component
             'question_code' => $this->code,
         ]);
 
-        //TODO zmenit redirect na uspesnu stranku zaznamenia odpovedi
-        return redirect()->route('question', ['code' => $this->code]);
+        return redirect()->route('answers', ['code' => $this->code]);
     }
 
     public function render()

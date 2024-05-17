@@ -5,12 +5,7 @@
         <p>Subject: {{ $question->subject()->first()->name}}</p>
         <p>Question: {{ $question->question }}</p>
         @if($question->options()->count() > 0)
-            <h2>Options:</h2>
-            <ul>
-                @foreach($question->options()->get() as $option)
-                    <li>{{ $option->option }}</li>
-                @endforeach
-            </ul>
+            @livewire('answer-option', ['options' =>$question->options()->get()] )
         @else
             @livewire('answer', ['code' => $question->code])
         @endif

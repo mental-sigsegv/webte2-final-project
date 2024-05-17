@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('question_code',5);
             $table->foreign('question_code')->references('code')->on('questions');
             $table->string('answer');
+            $table->foreignId('option_id')->nullable();
+            $table->foreign('option_id')->references('id')->on('options');
             $table->timestamps();
         });
     }
