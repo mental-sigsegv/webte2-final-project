@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    public function resetPassword(Request $request) {
+        Validator::make($request->all(), [
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        User::where('id', auth()->id())->update(array('password' => Hash::make($request->input('new_password'))));
+
+        return redirect()->intended();
+    }
     public function registerUser(Request $request)
     {
         $validator = Validator::make($request->all(), [
