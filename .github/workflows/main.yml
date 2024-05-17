@@ -20,6 +20,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_HOST }}
+          protocol: ftps
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /var/www/node58.webte.fei.stuba.sk/webte2-final-project
+          server-dir: /var/www/node58.webte.fei.stuba.sk/webte2-final-project/
