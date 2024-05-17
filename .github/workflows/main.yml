@@ -13,11 +13,6 @@ jobs:
     environment: production
 
     steps:
-      - name: echo a secret
-        shell: bash
-        env:
-          SSH_KEY: ${{secrets.FTP_USER}}
-        run: 'echo "$SSH_KEY" > key'
       - name: Checkout
         uses: actions/checkout@v2
       - name: deploy file
