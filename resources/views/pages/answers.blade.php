@@ -1,10 +1,7 @@
 <x-layouts.app title="{{ __('navbar.answers') }}">
     <h1>{{ __('message.question') }}: {{ $question->question }}</h1>
-        <h2>{{ __('navbar.answers') }}:</h2>
-<x-layouts.app>
-    <h1>Question: {{ $question->question }}</h1>
     @if ($question->open == 0)
-        <h2>Answers:</h2>
+        <h2>{{ __('navbar.answers') }}:</h2>
 {{--        <ul>--}}
 {{--            @forelse ($question->answers as $answer)--}}
 {{--                @php--}}
