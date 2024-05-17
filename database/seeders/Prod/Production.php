@@ -1,14 +1,12 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Prod;
 
 use App\Enums\Roles;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
-class AdminSeeder extends Seeder
+class Production extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,15 +15,15 @@ class AdminSeeder extends Seeder
     {
         User::create([
             'name' => 'Admin User',
-            'login' => 'admin',
-            'password' => 'password',
+            'login' => 'ProductionAdmin',
+            'password' => 'C8Rc43Ze5m3t5ccP',
             'role' => Roles::Admin,
         ]);
 
         User::create([
             'name' => 'User',
-            'login' => 'user',
-            'password' => 'password',
+            'login' => 'ProductionUser',
+            'password' => 'C8Rc43Ze5m3t5ccP',
             'role' => Roles::User,
         ]);
     }
