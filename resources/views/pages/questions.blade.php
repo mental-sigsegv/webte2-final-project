@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-layouts.app title="{{ __('navbar.questions') }}">
     <div class="overflow-x-auto">
         <table id="showQuestions" class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
             <thead class="bg-gray-800 text-white">

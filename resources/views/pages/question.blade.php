@@ -1,9 +1,9 @@
-<x-layouts.app title="Question Page">
-    <h1>Question Details</h1>
+<x-layouts.app title="{{ __('navbar.question') }}">
+    <h1>{{ __('message.question-details') }}</h1>
 
     @if($question)
-        <p>Subject: {{ $question->subject()->first()->name}}</p>
-        <p>Question: {{ $question->question }}</p>
+        <p>{{ __('message.subject') }}: {{ $question->subject()->first()->name}}</p>
+        <p>{{ __('message.question') }}: {{ $question->question }}</p>
         @if($question->options()->count() > 0)
             @livewire('answer-option', ['options' =>$question->options()->get()] )
         @else

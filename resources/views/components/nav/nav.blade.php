@@ -1,6 +1,5 @@
 <div class="mx-10 py-5 flex mb-3">
     <x-nav.nav-link href="/" :active="request()->is('/')">{{ __('navbar.home') }}</x-nav.nav-link>
-    <x-nav.nav-link href="/qrcode" :active="request()->is('qrcode')">QR Code</x-nav.nav-link>
 
     <x-nav.nav-link href="/manual" :active="request()->is('manual')">{{ __('navbar.manual') }}</x-nav.nav-link>
 
@@ -10,8 +9,8 @@
                         :active="request()->is('questions')">{{ __('navbar.questions') }}</x-nav.nav-link>
         <x-nav.nav-link href="/question/create"
                         :active="request()->is('question/create')">{{ __('navbar.new-question') }}</x-nav.nav-link>
-        @if(auth()->user()->role === 'Admin')
-            <x-nav.nav-link href="/admin" :active="request()->is('admin')">Admin</x-nav.nav-link>
+        @if(auth()->user()->isAdmin())
+            <x-nav.nav-link href="/admin" :active="request()->is('admin')">{{ __('navbar.admin') }}</x-nav.nav-link>
         @endif
     @endauth
 

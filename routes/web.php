@@ -25,14 +25,6 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
-Route::get('/test', function () {
-    return view('pages.coming-soon');
-});
-
-Route::get('/qrcode', function () {
-    return view('pages.qrcode');
-})->middleware(\App\Http\Middleware\Authenticate::class);
-
 Route::get('/login', function () {
     if (auth()->check()) {
         return redirect()->intended();
@@ -51,7 +43,7 @@ Route::get('/register', function () {
 
 Route::post('/register', [UserController::class, 'registerUser']);
 
-Route::post('/login', [UserController::class, 'loginUser'])->name('login');
+Route::post('/login', [UserController::class, 'loginUser']);
 
 Route::get('/logout', [UserController::class, 'logoutUser']);
 
@@ -62,8 +54,10 @@ if (App::environment('local')) {
 }
 
 Route::get('/reset_password', function () {
-    return view('pages.coming-soon');
+    return view('pages.reset-password');
 });
+
+Route::post('/reset_password', [UserController::class, 'resetPassword']);
 
 Route::middleware(['auth', Admin::class])->get('/admin', function () {
     return view('pages.admin');
