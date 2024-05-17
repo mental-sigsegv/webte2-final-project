@@ -69,7 +69,7 @@ Route::middleware(['auth', Admin::class])->get('/admin', function () {
     return view('pages.admin');
 });
 
-Route::get('/questions', [QuestionController::class, 'show']);
+Route::get('/questions', [QuestionController::class, 'show'])->middleware('auth');
 
 Route::get('/question/create', function () {
     return view('pages.create-question');
@@ -77,11 +77,11 @@ Route::get('/question/create', function () {
 
 Route::delete('/questions/delete/{questionId}',
     [QuestionController::class, 'deleteQuestion'])
-    ->name('questions.delete');
+    ->name('questions.delete')->middleware('auth');
 
 Route::patch('/questions/update/{questionId}',
     [QuestionController::class, 'updateQuestion'])
-    ->name('questions.update');
+    ->name('questions.update')->middleware('auth');
 
 Route::get('/question/{code}',
     [AnswerController::class, 'view'])
