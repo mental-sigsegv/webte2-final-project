@@ -18,7 +18,7 @@ jobs:
       - name: deploy file
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          username: ${{ secrets.FTP_USER }}
+          username: 'xklacikm'
           server: ${{ secrets.FTP_HOST }}
           password: ${{ secrets.FTP_PASSWORD }}
           sftp_only: true
