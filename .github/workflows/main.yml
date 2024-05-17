@@ -13,13 +13,13 @@ jobs:
     environment: production
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2
-
-      - name: FPT sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: deploy file
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
+          server: ${{ secrets.FTP_HOST }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /var/www/node58.webte.fei.stuba.sk/webte2-final-project
+          remote_path: '/var/www/node58.webte.fei.stuba.sk/webte2-final-project'
+          sftpArgs: '-o ConnectTimeout=5'
