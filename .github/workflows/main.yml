@@ -22,4 +22,4 @@ jobs:
           server: '147.175.105.58'
           protocol: ftps
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: '/var/www/node58.webte.fei.stuba.sk/webte2-final-project'
+          server-dir: '/var/www/node58.webte.fei.stuba.sk/webte2-final-project/'
