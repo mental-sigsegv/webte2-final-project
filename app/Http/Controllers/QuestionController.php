@@ -88,8 +88,24 @@ class QuestionController extends Controller
 
     public function viewAnswers($code)
     {
-        $question = Question::with('answers')->where('code', $code)->firstOrFail();
-        return view('pages.answers', ['question' => $question]);
+        $question = Question::with('answers.option')->where('code', $code)->firstOrFail();
+
+        $optionsData = $question->answers
+            ->groupBy('option.option')
+            ->map(function ($group) {
+                return [
+                    'count' => $group->count(),
+                    'correct' => $group->first()->option->correct,
+                ];
+            });
+
+        $labels = $optionsData->keys()->all();
+        $data = $optionsData->pluck('count')->all();
+        $backgroundColors = $optionsData->map(function ($item) {
+            return $item['correct'] ? '#4CAF50' : '#F44336';
+        })->values()->all();
+
+        return view('pages.answers', compact('question', 'labels', 'data', 'backgroundColors'));
     }
 
 }
