@@ -16,10 +16,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: deploy file
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           username: 'xklacikm'
           server: '147.175.105.58'
+          protocol: ftps
           password: ${{ secrets.FTP_PASSWORD }}
-          sftp_only: true
-          remote_path: '/var/www/node58.webte.fei.stuba.sk/webte2-final-project'
+          server-dir: '/var/www/node58.webte.fei.stuba.sk/webte2-final-project'
