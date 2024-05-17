@@ -19,7 +19,6 @@ class Answer extends Component
     {
         $this->code = $code;
     }
-
     public function submitAnswer()
     {
         $this->validate();
