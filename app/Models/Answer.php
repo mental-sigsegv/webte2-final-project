@@ -7,4 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+
+    protected $fillable = [
+        'answer',
+        'question_code'
+    ];
+    public function question()
+    {
+        return $this->belongsTo(Question::class, 'question_code', 'code');
+    }
 }

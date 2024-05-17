@@ -11,8 +11,8 @@
                     <li>{{ $option->option }}</li>
                 @endforeach
             </ul>
+        @else
+            @livewire('answer', ['code' => $question->code])
         @endif
-    @else
-        <p>No question found for the provided code.</p>
     @endif
 </x-layouts.app>
