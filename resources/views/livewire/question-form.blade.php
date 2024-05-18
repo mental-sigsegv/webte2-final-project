@@ -1,4 +1,4 @@
-<div class="max-w-md mx-auto bg-black p-6 rounded-lg shadow-lg text-white">
+<div class="max-w-md mx-auto bg-gray-800 p-6 rounded-lg shadow-lg text-white">
 <form wire:submit="save">
     <div class="max-w-md mx-auto">
         <div class="relative z-0 w-full mb-5 group">
@@ -25,15 +25,20 @@
 
 
         @if(!$question_type)
-            <button type="button" wire:click="addOption" class="mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add</button>
+            <button type="button" wire:click="addOption"
+                    class="mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 flex justify-center items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                     stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
+                </svg>
+            </button>
 
             @foreach($options as $id => $value)
                 @livewire('question-option', ['id' => $id, key($id)])
             @endforeach
         @endif
 
-        <button type="submit" class="mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{ __('message.save') }}</button>
-    </div>
+        <button type="submit" class="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">{{ __('message.save') }}</button>    </div>
 
 </form>
 </div>

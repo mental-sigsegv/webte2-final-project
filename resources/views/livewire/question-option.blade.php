@@ -6,8 +6,8 @@
         </div>
 
         <div class="flex items-center mb-4">
-            <input type="checkbox" wire:change="updateValue" id="correct-{{ $id }}" wire:model="correct" value="1" class="form-checkbox h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-2">
-            <label for="correct-{{ $id }}" class="text-sm font-medium text-gray-900 dark:text-white">{{ __('message.correct') }}</label>
+            <input type="checkbox" wire:change="updateValue" id="correct-{{ $id }}" wire:model="correct" value="1" class="form-checkbox h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-2"/>
+            <label for="correct-{{ $id }}" class="text-sm font-medium text-white dark:text-white">{ __('message.correct') }}</label>
         </div>
     </div>
 
