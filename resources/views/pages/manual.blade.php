@@ -1,75 +1,70 @@
 <x-layouts.app>
-    <style>
-        @font-face {
-            font-family: 'DejaVu Sans';
-            src: url('{{ public_path('fonts/DejaVuSans.ttf') }}') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
+    <div class="container mx-auto p-6">
+        <button onclick="window.location.href='{{ route('manual.download') }}'"
+                class="download-button bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+            Download as PDF
+        </button>
 
-        body {
-            font-family: 'DejaVu Sans', sans-serif;
-        }
-    </style>
-    <button onclick="window.location.href='{{ route('manual.download') }}'" class="download-button">Stiahnuť ako PDF</button>
-
-    <h2>Prihlásenie:</h2>
-    <p>Používateľ sa môže prihlásiť pomocou vlastnej registrácie.</p>
-    <h2>Zmena hesla:</h2>
-    <p>Používateľ môže zmeniť svoje heslo.</p>
-
-    <h2>Otazky:</h2>
-    <ul>
-        <li>Otazky je možné v menu Nova otazka.</li>
-        <li>Používateľ môže definovať viacero hlasovacích otázok.</li>
-        <li>Každej otázke je generovaný QR kód a unikátny 5-znakový kód.</li>
-    </ul>
-
-    <h2>Typy otázok:</h2>
-    <ul>
-        <li>Otázky s výberom správnej odpovede.</li>
-        <li>Otázky s otvorenou krátkou odpoveďou.</li>
-    </ul>
-
-    <h2>Zobrazenie výsledkov:</h2>
-    <ul>
-        <li>Pri otázkach je možné zobraziť výsledky.</li>
-    </ul>
-
-    <h2>Úprava otázok:</h2>
-    <ul>
-        <li>Používateľ môže upravovať či je otázka aktivna, meniť predmet a znenie otázky a mazať existujúce otázky.</li>
-    </ul>
-
-    <h2>Filtrovanie otázok:</h2>
-    <ul>
-        <li>Otázky je možné filtrovať podľa predmetu a dátumu vytvorenia.</li>
-    </ul>
-
-    <h2>Zobrazenie výsledkov:</h2>
-    <ul>
-        <li>Použivatel ma možnosť zobraziť výsledky.</li>
-    </ul>
-
-    <h2>Export otázok a odpovedí:</h2>
-    <ul>
-        <li>Možnosť exportu otázok a odpovedí do CSV</li>
-    </ul>
-
-    <p>Administrátor má tú istú funkčnosť ako prihlásený používateľ s tým rozdielom, že má k dispozícii hlasovacie otázky všetkých prihlásených používateľov s možnosťou filtrovania nad vybraným používateľom.</p>
-    <p>Pri vytváraní novej hlasovacej otázky administrátor môže špecifikovať, či to robí vlastným menom alebo v mene iného používateľa.</p>
-    <p>Administrátor má prístup k správe prihlásených používateľov, vrátane vytvárania, čítania, aktualizácie a mazania (CRUD) používateľských účtov, ako aj možnosť zmeny ich rolí a hesiel.</p>
-
-    <h2>Získanie hlasovacej otázky:</h2>
-    <ul>
-        <li>Používateľ sa môže dostať na stránku s hlasovacou otázkou:</li>
-        <ul>
-            <li>Načítaním zverejneného QR kódu.</li>
-            <li>Zadaním vstupného kódu na domovskej stránke aplikácie.</li>
-            <li>Zadaním adresy do prehliadača v tvare <code>https://nodeXX.webte.fei.stuba.sk/abcde</code>, kde <code>abcde</code> je 5-znakový vstupný kód.</li>
-        </ul>
-    </ul>
-
-    <h2>Vyplnenie hlasovacej otázky:</h2>
-    <p>Po vyplnení hlasovacej otázky bude užívateľ presmerovaný na stránku s grafickým zobrazením výsledkov hlasovania na danú otázku.</p>
+        <div class="mt-8 space-y-6 text-white">
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">Login:</h2>
+                <p>Users can log in using their own registration.</p>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">Change Password:</h2>
+                <p>Users can change their password.</p>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">Questions:</h2>
+                    Questions can be created in the "New Question" menu.
+                    Users can define multiple voting questions.
+                    Each question has a generated QR code and a unique 5-character code.
+                </ul>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">Question Types:</h2>
+                    Questions with a choice of correct answers.
+                    Questions with an open short answer.
+                </ul>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">Results Display:</h2>
+                    Results can be displayed for questions.
+                </ul>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">Question Editing:</h2>
+                    Users can edit whether the question is active, change the subject and wording of the question, and delete existing questions.
+                </ul>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">Question Filtering:</h2>
+                    Questions can be filtered by subject and creation date.
+                </ul>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">Export Questions and Answers:</h2>
+                    Option to export questions and answers to CSV.
+                </ul>
+                <p>The administrator has the same functionality as a logged-in user with the difference that they have access to voting questions of all logged-in users with the ability to filter over selected users.</p>
+                <p>When creating a new voting question, the administrator can specify whether they are doing it in their own name or on behalf of another user.</p>
+                <p>The administrator has access to managing logged-in users, including creating, reading, updating, and deleting (CRUD) user accounts, as well as the ability to change their roles and passwords.</p>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">Getting a Poll Question:</h2>
+                    User can get to the page with the poll question:
+                    <ul class="list-disc list-inside pl-6">
+                        <li>By scanning the published QR code.</li>
+                        <li>By entering the access code on the application's home page.</li>
+                        <li>By entering the address into the browser in the form <code class="bg-gray-500 p-1 rounded-lg">https://nodeXX.webte.fei.stuba.sk/abcde</code>,
+                            where <code class="bg-gray-500 p-1 rounded-lg">abcde</code> is a 5-character access code.</li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">Completing a Poll Question:</h2>
+                <p>After completing the poll question, the user will be redirected to a page with graphical representation of the voting results for that question.</p>
+            </div>
+        </div>
+    </div>
 </x-layouts.app>
