@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Question;
@@ -14,6 +16,18 @@ class QuestionsTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id');
+    }
+
+    public function builder(): Builder
+    {
+        $whereClause = '1=1';
+        if (!Auth::user()->isAdmin()) {
+            $whereClause = 'questions.user_id = ' . Auth::id();
+        }
+
+        return Question::query()
+            ->whereRaw($whereClause)
+            ->select();
     }
 
     public function columns(): array
