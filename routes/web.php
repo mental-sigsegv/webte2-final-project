@@ -83,11 +83,11 @@ Route::patch('/questions/update/{questionId}',
 
 Route::get('/question/{code}',
     [AnswerController::class, 'view'])
-    ->name('question');
+    ->name('question')->middleware('question.active');
 
 Route::get('/question/{code}/result',
     [QuestionController::class, 'viewAnswers'])
-    ->name('answers');
+    ->name('answers')->middleware('question.active');
 
 
 Route::get('/manual', function () {
