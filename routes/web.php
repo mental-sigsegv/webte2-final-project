@@ -91,6 +91,9 @@ Route::get('/question/{code}/result',
     [QuestionController::class, 'viewAnswers'])
     ->name('answers')->middleware('question.active');
 
+Route::get('/questions/export',
+    [QuestionController::class, 'exportQuestions'])
+    ->name('questions.export');
 
 Route::get('/manual', function () {
     return view('pages.manual');

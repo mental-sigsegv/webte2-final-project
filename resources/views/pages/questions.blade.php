@@ -1,5 +1,8 @@
 <x-layouts.app title="{{ __('navbar.questions') }}">
     <div class="overflow-x-auto">
+        <button onclick="window.location.href='{{ route('questions.export') }}'" class="bg-blue-500 text-white px-4 py-2 rounded mb-4">
+            Export All Questions
+        </button>
         <table id="showQuestions" class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
             <thead class="bg-gray-800 text-white">
             <tr>
