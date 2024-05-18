@@ -15,13 +15,14 @@
             </tr>
             </thead>
             <tbody>
+            @livewire('wire-elements-modal')
             @foreach ($questions as $question)
                 <tr class="border-b bg-white even:bg-gray-100">
                     <td class="px-4 py-2">
                         @livewire('non-editable-table-cell', ['content' => $question->user->name])
                     </td>
                     <td class="px-4 py-2">
-                        @livewire('non-editable-table-cell', ['content' => $question->code])
+                        <button onclick="Livewire.dispatch('openModal', { component: 'qr-code', arguments: { url: '{{ url('/question/' . $question->code) }}'  }})">{{$question->code}}</button>
                     </td>
                     <td class="px-4 py-2">
                         @livewire('editable-table-cell', ['value' => $question->question, 'model' => $question, 'attribute' => 'question', 'code' => $question->code], key($question->id . '_question'))
