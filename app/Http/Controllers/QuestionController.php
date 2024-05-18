@@ -88,7 +88,8 @@ class QuestionController extends Controller
 
     public function viewAnswers($code)
     {
-        $question = Question::findByCode($code)::with('answers.option')->firstOrFail();
+        $question = Question::with('answers.option')->where('code', $code)->firstOrFail();
+
         $optionsData = $question->answers
             ->groupBy('option.option')
             ->map(function ($group) {

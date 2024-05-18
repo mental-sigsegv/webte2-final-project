@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
             $table->string('question_code',5);
-            $table->foreign('question_code')->references('code')->on('questions');
+            $table->foreign('question_code')->references('code')->on('questions')->onDelete('cascade');
             $table->string('answer');
             $table->foreignId('option_id')->nullable();
             $table->foreign('option_id')->references('id')->on('options');
