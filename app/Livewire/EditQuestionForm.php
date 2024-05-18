@@ -13,13 +13,16 @@ class EditQuestionForm extends ModalComponent
     public $active;
     public $questionId;
 
+    protected $casts = [
+        'active' => 'boolean',
+    ];
     public function mount($questionId)
     {
         $question = Question::findOrFail($questionId);
 
         $this->question = $question->question;
-        $this->subject_name = $question->subject->name; // Assuming 'subject' relationship is defined
-        $this->active = $question->active;
+        $this->subject_name = $question->subject->name;
+        $this->active = $question->active == 1;
         $this->questionId = $question->id;
     }
 
@@ -35,7 +38,7 @@ class EditQuestionForm extends ModalComponent
         if($question->answers()->count() == 0) {
             $question->update([
                 'question' => $this->question,
-                'active' => $this->active,
+                'active' => $this->active ? 1 : 0,
             ]);
 
             $question->subject()->update([
