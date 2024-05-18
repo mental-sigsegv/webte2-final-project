@@ -1,75 +1,69 @@
 <x-layouts.app>
-    <style>
-        @font-face {
-            font-family: 'DejaVu Sans';
-            src: url('{{ public_path('fonts/DejaVuSans.ttf') }}') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
+    <div class="container mx-auto p-6">
+        <button onclick="window.location.href='{{ route('manual.download') }}'"
+                class="download-button bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+            {{ __('manual.download_pdf') }}
+        </button>
 
-        body {
-            font-family: 'DejaVu Sans', sans-serif;
-        }
-    </style>
-    <button onclick="window.location.href='{{ route('manual.download') }}'" class="download-button">Stiahnuť ako PDF</button>
-
-    <h2>Prihlásenie:</h2>
-    <p>Používateľ sa môže prihlásiť pomocou vlastnej registrácie.</p>
-    <h2>Zmena hesla:</h2>
-    <p>Používateľ môže zmeniť svoje heslo.</p>
-
-    <h2>Otazky:</h2>
-    <ul>
-        <li>Otazky je možné v menu Nova otazka.</li>
-        <li>Používateľ môže definovať viacero hlasovacích otázok.</li>
-        <li>Každej otázke je generovaný QR kód a unikátny 5-znakový kód.</li>
-    </ul>
-
-    <h2>Typy otázok:</h2>
-    <ul>
-        <li>Otázky s výberom správnej odpovede.</li>
-        <li>Otázky s otvorenou krátkou odpoveďou.</li>
-    </ul>
-
-    <h2>Zobrazenie výsledkov:</h2>
-    <ul>
-        <li>Pri otázkach je možné zobraziť výsledky.</li>
-    </ul>
-
-    <h2>Úprava otázok:</h2>
-    <ul>
-        <li>Používateľ môže upravovať či je otázka aktivna, meniť predmet a znenie otázky a mazať existujúce otázky.</li>
-    </ul>
-
-    <h2>Filtrovanie otázok:</h2>
-    <ul>
-        <li>Otázky je možné filtrovať podľa predmetu a dátumu vytvorenia.</li>
-    </ul>
-
-    <h2>Zobrazenie výsledkov:</h2>
-    <ul>
-        <li>Použivatel ma možnosť zobraziť výsledky.</li>
-    </ul>
-
-    <h2>Export otázok a odpovedí:</h2>
-    <ul>
-        <li>Možnosť exportu otázok a odpovedí do CSV</li>
-    </ul>
-
-    <p>Administrátor má tú istú funkčnosť ako prihlásený používateľ s tým rozdielom, že má k dispozícii hlasovacie otázky všetkých prihlásených používateľov s možnosťou filtrovania nad vybraným používateľom.</p>
-    <p>Pri vytváraní novej hlasovacej otázky administrátor môže špecifikovať, či to robí vlastným menom alebo v mene iného používateľa.</p>
-    <p>Administrátor má prístup k správe prihlásených používateľov, vrátane vytvárania, čítania, aktualizácie a mazania (CRUD) používateľských účtov, ako aj možnosť zmeny ich rolí a hesiel.</p>
-
-    <h2>Získanie hlasovacej otázky:</h2>
-    <ul>
-        <li>Používateľ sa môže dostať na stránku s hlasovacou otázkou:</li>
-        <ul>
-            <li>Načítaním zverejneného QR kódu.</li>
-            <li>Zadaním vstupného kódu na domovskej stránke aplikácie.</li>
-            <li>Zadaním adresy do prehliadača v tvare <code>https://nodeXX.webte.fei.stuba.sk/abcde</code>, kde <code>abcde</code> je 5-znakový vstupný kód.</li>
-        </ul>
-    </ul>
-
-    <h2>Vyplnenie hlasovacej otázky:</h2>
-    <p>Po vyplnení hlasovacej otázky bude užívateľ presmerovaný na stránku s grafickým zobrazením výsledkov hlasovania na danú otázku.</p>
+        <div class="mt-8 space-y-6 text-white">
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">{{ __('manual.login') }}</h2>
+                <p>{{ __('manual.login_description') }}</p>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">{{ __('manual.change_password') }}</h2>
+                <p>{{ __('manual.change_password_description') }}</p>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">{{ __('manual.questions') }}</h2>
+                <ul class="list-disc list-inside pl-6">
+                    @foreach(__('manual.questions_description') as $desc)
+                        <li>{{ $desc }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">{{ __('manual.question_types') }}</h2>
+                <ul class="list-disc list-inside pl-6">
+                    @foreach(__('manual.question_types_description') as $desc)
+                        <li>{{ $desc }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">{{ __('manual.results_display') }}</h2>
+                <p>{{ __('manual.results_display_description') }}</p>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">{{ __('manual.question_editing') }}</h2>
+                <p>{{ __('manual.question_editing_description') }}</p>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">{{ __('manual.question_filtering') }}</h2>
+                <p>{{ __('manual.question_filtering_description') }}</p>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">{{ __('manual.export_questions') }}</h2>
+                <p>{{ __('manual.export_questions_description') }}</p>
+                <p>
+                    @foreach(__('manual.admin_description') as $desc)
+                        {{ $desc }}<br>
+                    @endforeach
+                </p>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">{{ __('manual.getting_poll') }}</h2>
+                <p>{{ __('manual.getting_poll_description') }}</p>
+                <ul class="list-disc list-inside pl-6">
+                    @foreach(__('manual.getting_poll_methods') as $desc)
+                        <li>{{ $desc }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
+                <h2 class="text-2xl font-bold mb-2">{{ __('manual.completing_poll') }}</h2>
+                <p>{{ __('manual.completing_poll_description') }}</p>
+            </div>
+        </div>
+    </div>
 </x-layouts.app>

@@ -11,6 +11,7 @@
         <!-- Styles -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <title>{{ $title ?? 'Page Title' }}</title>
     </head>
@@ -18,6 +19,18 @@
         <x-nav.nav>
 
         </x-nav.nav>
+
+
+        @if ($errors->any())
+            <script>
+                Swal.fire({
+                    icon: "error",
+                    title: 'Error',
+                    text: "{!! collect($errors->all())->implode(' ') !!}",
+                    type: 'error',
+                });
+            </script>
+        @endif
 
         <div class="m-3">
             {{ $slot }}

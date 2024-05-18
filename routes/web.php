@@ -69,6 +69,8 @@ Route::middleware(['auth', Admin::class])->get('/admin', function () {
 
 Route::get('/questions', [QuestionController::class, 'show'])->middleware('auth');
 
+Route::get('/questions', [QuestionController::class, 'show'])->middleware('auth');
+
 Route::get('/question/create', function () {
     return view('pages.create-question');
 })->middleware('auth');;
@@ -83,12 +85,15 @@ Route::patch('/questions/update/{questionId}',
 
 Route::get('/question/{code}',
     [AnswerController::class, 'view'])
-    ->name('question');
+    ->name('question')->middleware('question.active');
 
 Route::get('/question/{code}/result',
     [QuestionController::class, 'viewAnswers'])
-    ->name('answers');
+    ->name('answers')->middleware('question.active');
 
+Route::get('/questions/export',
+    [QuestionController::class, 'exportQuestions'])
+    ->name('questions.export');
 
 Route::get('/manual', function () {
     return view('pages.manual');
