@@ -26,6 +26,11 @@ class UserDatatable extends DataTableComponent
         $this->setPrimaryKey('id');
     }
 
+    public function deleteUser($id): void
+    {
+        DB::table('users')->where('id', '=', $id)->delete();
+    }
+
     public function columns(): array
     {
         return [
@@ -44,7 +49,7 @@ class UserDatatable extends DataTableComponent
             Column::make('Action')
                 ->label(
                     fn ($row, Column $column) =>
-                    \Livewire\Livewire::mount('actions', ['id' => $row->id])
+                        view('components.actions', ['id' => $row->id])
                 )->html(),
         ];
     }

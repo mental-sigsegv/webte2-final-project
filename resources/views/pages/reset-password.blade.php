@@ -18,10 +18,10 @@
                         </div>
 
                         <div>
-                            <label for="confirm_new_password" class="@error('password') is-invalid @enderror block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('auth.confirm-password') }}</label>
-                            <input type="password" name="confirm_new_password" id="confirm_new_password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                            <label for="new_password_confirmation" class="@error('password') is-invalid @enderror block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('auth.confirm-password') }}</label>
+                            <input type="password" name="new_password_confirmation" id="new_password_confirmation" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
 
-                            @error('confirm_new_password')
+                            @error('new_password_confirmation')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
