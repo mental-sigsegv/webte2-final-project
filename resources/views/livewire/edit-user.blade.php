@@ -9,7 +9,7 @@
                 <form class="space-y-4 md:space-y-6" action="/reset_password" method="POST">
                     @csrf
                     <p>
-                        chaning password for {{ $id }}
+                        You are now changing the password for user with ID: {{ $id }}
                     </p>
                     <input name='id' id="id" value="{{ $id }}" type="text" hidden>
                     <div>
