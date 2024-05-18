@@ -1,4 +1,16 @@
 <x-layouts.app>
+    <style>
+        @font-face {
+            font-family: 'DejaVu Sans';
+            src: url('{{ public_path('fonts/DejaVuSans.ttf') }}') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'DejaVu Sans', sans-serif;
+        }
+    </style>
     <button onclick="window.location.href='{{ route('manual.download') }}'" class="download-button">Stiahnuť ako PDF</button>
 
     <h2>Prihlásenie:</h2>
