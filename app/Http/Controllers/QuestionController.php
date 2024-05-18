@@ -6,6 +6,7 @@ use App\Models\Question;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 
 class QuestionController extends Controller
 {
@@ -106,6 +107,49 @@ class QuestionController extends Controller
         })->values()->all();
 
         return view('pages.answers', compact('question', 'labels', 'data', 'backgroundColors'));
+    }
+
+
+    public function exportQuestions()
+    {
+        // Retrieve all questions with their options and answers
+        $questions = Question::with(['options', 'answers.option'])->get();
+
+        // Convert questions to JSON
+        $json = $questions->map(function($question) {
+            return [
+                'question' => $question->question,
+                'code' => $question->code,
+                'created_at' => $question->created_at,
+                'updated_at' => $question->updated_at,
+                'active' => $question->active,
+                'open' => $question->open,
+                'subject' => $question->subject->name ?? null,
+                'options' => $question->options->map(function($option) {
+                    return [
+                        'option' => $option->option,
+                        'correct' => $option->correct,
+                    ];
+                }),
+                'answers' => $question->answers->map(function($answer) use ($question) {
+                    return [
+                        'answer' => $question->open == 1 ? $answer->answer : $answer->option->option,
+                        'correct' => $question->open == 1 ? null : $answer->option->correct,
+                        'created_at' => $answer->created_at,
+                    ];
+                }),
+            ];
+        })->toJson();
+
+        // Define the file name and path
+        $fileName = 'questions_' . now()->format('Y-m-d_H-i-s') . '.json';
+        $filePath = storage_path('app/' . $fileName);
+
+        // Save JSON to a file
+        file_put_contents($filePath, $json);
+
+        // Return the JSON file as a response
+        return Response::download($filePath)->deleteFileAfterSend(true);
     }
 
 }

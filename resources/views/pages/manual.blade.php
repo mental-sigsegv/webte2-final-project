@@ -23,6 +23,7 @@
         <li>Otazky je možné v menu Nova otazka.</li>
         <li>Používateľ môže definovať viacero hlasovacích otázok.</li>
         <li>Každej otázke je generovaný QR kód a unikátny 5-znakový kód.</li>
+        <li>OR kód použivateľ môže zobraziť po kliknutí na kód otázky v sekcií otázky</li>
     </ul>
 
     <h2>Typy otázok:</h2>
@@ -39,6 +40,7 @@
     <h2>Úprava otázok:</h2>
     <ul>
         <li>Používateľ môže upravovať či je otázka aktivna, meniť predmet a znenie otázky a mazať existujúce otázky.</li>
+        <li>Predmet alebo znenie otázky použivatel môže zmeniť po kliknuti na daný text v sekcii otázky</li>
     </ul>
 
     <h2>Filtrovanie otázok:</h2>
