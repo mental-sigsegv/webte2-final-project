@@ -12,11 +12,18 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
     public function resetPassword(Request $request) {
-        Validator::make($request->all(), [
-            'password' => 'required|string|min:8|confirmed',
+        $validated = $request->validate([
+            'new_password' => 'required|string|min:8|confirmed',
         ]);
 
-        User::where('id', auth()->id())->update(array('password' => Hash::make($request->input('new_password'))));
+        if (auth()->user()->isAdmin()) {
+            $id = $request->input('id', auth()->id());
+        } else {
+            $id = auth()->id();
+        }
+
+
+        User::where('id', $id)->update(array('password' => Hash::make($request->input('new_password'))));
 
         return redirect()->intended();
     }
