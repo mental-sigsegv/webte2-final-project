@@ -87,8 +87,7 @@ class QuestionController extends Controller
 
     public function viewAnswers($code)
     {
-        $question = Question::with('answers.option')->where('code', $code)->firstOrFail();
-
+        $question = Question::findByCode($code)::with('answers.option')->firstOrFail();
         $optionsData = $question->answers
             ->groupBy('option.option')
             ->map(function ($group) {
@@ -98,7 +97,6 @@ class QuestionController extends Controller
                     'correct' => $firstOption->correct ?? 0,
                 ];
             });
-
         $labels = $optionsData->keys()->all();
         $data = $optionsData->pluck('count')->all();
         $backgroundColors = $optionsData->map(function ($item) {
