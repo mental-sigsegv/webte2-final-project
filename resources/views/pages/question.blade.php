@@ -4,8 +4,10 @@
 
         @if($question)
             <div class="bg-white text-lg text-gray-800 rounded-lg shadow-md p-6 mb-8">
-                <p>{{ __('message.subject') }}: <span class="font-bold">{{ $question->subject()->first()->name }}</span></p>
-                <p class="mb-3">{{ __('message.question') }}: <span class="font-bold">{{ $question->question }}</span></p>
+                <p>{{ __('message.subject') }}: <span class="font-bold">{{ $question->subject()->first()->name }}</span>
+                </p>
+                <p class="mb-3">{{ __('message.question') }}: <span class="font-bold">{{ $question->question }}</span>
+                </p>
                 @if($question->options()->count() > 0)
                     @livewire('answer-option', ['options' =>$question->options()->get()] )
                 @else
