@@ -1,4 +1,4 @@
-<div class="max-w-md mx-auto bg-black p-6 rounded-lg shadow-lg text-white">
+<div class="max-w-md mx-auto bg-gray-800 p-6 rounded-lg shadow-lg text-white">
 <form wire:submit="save">
     <div class="max-w-md mx-auto">
         <div class="relative z-0 w-full mb-5 group">
