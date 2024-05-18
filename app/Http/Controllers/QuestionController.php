@@ -94,7 +94,8 @@ class QuestionController extends Controller
             ->map(function ($group) {
                 return [
                     'count' => $group->count(),
-                    'correct' => $group->first()->option->correct,
+                    //'correct' => $group->first()->option->correct,
+                    'correct' => $firstOption->correct ?? 0,
                 ];
             });
 
