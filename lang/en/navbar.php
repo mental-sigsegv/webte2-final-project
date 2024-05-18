@@ -14,5 +14,4 @@ return [
     'reset-password' => 'Reset password',
     'admin' => 'Admin',
     'answers' => 'Answers',
-
 ];
