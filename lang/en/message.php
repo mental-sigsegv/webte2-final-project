@@ -16,6 +16,7 @@ return [
     'question-type-close' => 'Close',
     'save' => 'Save',
     'option' => 'Option',
+    'options' => 'Options',
     'correct' => 'Correct',
     'remove' => 'Remove',
 ];

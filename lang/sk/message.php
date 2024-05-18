@@ -16,6 +16,7 @@ return [
     'question-type-close' => 'Uzavretá',
     'save' => 'Uložiť',
     'option' => 'Možnosť',
+    'options' => 'Možnosti',
     'correct' => 'Správnosť',
     'remove' => 'Odstrániť',
 ];
