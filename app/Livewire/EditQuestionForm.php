@@ -9,7 +9,7 @@ use LivewireUI\Modal\ModalComponent;
 class EditQuestionForm extends ModalComponent
 {
     public $question;
-    public $subject;
+    public $subject_name;
     public $active;
     public $questionId;
 
@@ -18,7 +18,7 @@ class EditQuestionForm extends ModalComponent
         $question = Question::findOrFail($questionId);
 
         $this->question = $question->question;
-        $this->subject = $question->subject_id;
+        $this->subject_name = $question->subject->name; // Assuming 'subject' relationship is defined
         $this->active = $question->active;
         $this->questionId = $question->id;
     }
@@ -27,16 +27,21 @@ class EditQuestionForm extends ModalComponent
     {
         $validatedData = $this->validate([
             'question' => 'required|string|max:255',
-            'subject' => 'required|exists:subjects,id',
+            'subject_name' => 'required|string|max:255',
             'active' => 'required|boolean',
         ]);
 
         $question = Question::findOrFail($this->questionId);
-        $question->update([
-            'question' => $this->question,
-            'subject_id' => $this->subject,
-            'active' => $this->active,
-        ]);
+        if($question->answers()->count() == 0) {
+            $question->update([
+                'question' => $this->question,
+                'active' => $this->active,
+            ]);
+
+            $question->subject()->update([
+                'name' => $this->subject_name,
+            ]);
+        }
 
         session()->flash('message', 'Question updated successfully.');
     }

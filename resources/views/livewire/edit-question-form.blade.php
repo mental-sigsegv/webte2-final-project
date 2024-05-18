@@ -16,12 +16,8 @@
 
         <div>
             <label for="subject">Subject</label>
-            <select id="subject" wire:model="subject">
-                @foreach($subjects as $subject)
-                    <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                @endforeach
-            </select>
-            @error('subject') <span class="error">{{ $message }}</span> @enderror
+            <input type="text" id="subject" wire:model="subject_name">
+            @error('subject_name') <span class="error">{{ $message }}</span> @enderror
         </div>
 
         <div>
