@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\Local\AdminSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
 
@@ -16,7 +15,12 @@ class DatabaseSeeder extends Seeder
         if (App::environment('local')) {
             $this->call([
                 AdminSeeder::class,
+                UserSeeder::class,
             ]);
         }
+
+        $this->call([
+            Production::class,
+        ]);
     }
 }

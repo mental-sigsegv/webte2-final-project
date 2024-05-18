@@ -69,6 +69,8 @@ Route::middleware(['auth', Admin::class])->get('/admin', function () {
 
 Route::get('/questions', [QuestionController::class, 'show'])->middleware('auth');
 
+Route::get('/questions', [QuestionController::class, 'show'])->middleware('auth');
+
 Route::get('/question/create', function () {
     return view('pages.create-question');
 })->middleware('auth');;
