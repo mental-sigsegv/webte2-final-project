@@ -20,14 +20,14 @@ class QuestionsTable extends DataTableComponent
     {
         return [
             Column::make("Id", "id")->hideIf(true),
-            Column::make("Question", "question")
+            Column::make(__('question.question'), "question")
                 ->sortable()->searchable(),
-            Column::make('Subject', 'subject.name')
+            Column::make(__('question.subject'), 'subject.name')
                 ->sortable()
                 ->searchable(),
-            Column::make("Code", "code")
+            Column::make(__('question.code'), "code")
                 ->sortable()->searchable()->hideIf(true), //DONT REMOVE HIDE IF
-            Column::make('Code')
+            Column::make(__('question.code'))
                 ->label(
                     fn ($row, Column $column) => view('livewire.qr-code-button')->with(
                         [
@@ -35,27 +35,27 @@ class QuestionsTable extends DataTableComponent
                         ]
                     )
                 ),
-            BooleanColumn::make('Open'),
-            BooleanColumn::make('Active'),
-            Column::make("Created at", "created_at")
+            BooleanColumn::make(__('question.open'), "open"),
+            BooleanColumn::make(__('question.active'), "active"),
+            Column::make(__('question.created_at'), "created_at")
                 ->sortable(),
-            Column::make("Updated at", "updated_at")
+            Column::make(__('question.updated_at'), "updated_at")
                 ->sortable(),
-            Column::make('Update question')
+            Column::make(__('question.update_question'))
                 ->label(
                     fn ($row, Column $column) => view('livewire.update-question')->with(
                         [
                             'questionId' => $row->id,
                         ])
                 ),
-            Column::make('Delete')
+            Column::make(__('question.delete'))
                 ->label(
                     fn ($row, Column $column) => view('livewire.delete-question')->with(
                     [
                         'questionId' => $row->id,
                     ])
                 ),
-            Column::make('Show answers')
+            Column::make(__('question.show_answers'))
                 ->label(
                     fn ($row, Column $column) => view('livewire.show-answers')->with(
                         [

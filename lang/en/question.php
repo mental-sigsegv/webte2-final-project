@@ -14,4 +14,7 @@ return [
     'actions' => 'Actions',
     'yes' => 'Yes',
     'no' => 'No',
+    'update_question' => 'Update question',
+    'delete' => 'Delete',
+    'show_answers' => 'Show answers',
 ];

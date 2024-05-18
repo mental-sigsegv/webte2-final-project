@@ -14,4 +14,7 @@ return [
     'actions' => 'Akcie',
     'yes' => 'Áno',
     'no' => 'Nie',
+    'update_question' => 'Upraviť otázku',
+    'delete' => 'Vymazať otázku',
+    'show_answers' => 'Zobraziť odpovede',
 ];

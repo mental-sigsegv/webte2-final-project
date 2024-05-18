@@ -36,17 +36,17 @@ class UserDatatable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->hideIf(true),
-            Column::make("Name", "name")
+            Column::make(__('user.name'), "name")
                 ->sortable()
                 ->searchable(),
-            Column::make("Login", "login")
+            Column::make(__('user.login'), "login")
                 ->sortable()
                 ->searchable(),
-            Column::make("Created at", "created_at")
+            Column::make(__('user.created_at'), "created_at")
                 ->sortable(),
-            Column::make("Updated at", "updated_at")
+            Column::make(__('user.updated_at'), "updated_at")
                 ->sortable(),
-            Column::make('Action')
+            Column::make(__('user.action'))
                 ->label(
                     fn ($row, Column $column) =>
                         view('components.actions', ['id' => $row->id])
