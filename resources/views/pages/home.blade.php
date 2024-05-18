@@ -11,8 +11,5 @@
 
     @livewire('code')
 
-    @livewire('wire-elements-modal')
-    <button onclick="Livewire.dispatch('openModal', { component: 'modal-test' })">Open modal</button>
-
 
 </x-layouts.app>

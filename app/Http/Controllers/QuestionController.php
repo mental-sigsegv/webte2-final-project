@@ -41,7 +41,6 @@ class QuestionController extends Controller
             ->first();
 
         if ($question) {
-            //$question->options()->delete();
             $question->delete();
             return redirect()->back()->with('success', 'Question deleted successfully.');
         } else {
