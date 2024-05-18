@@ -96,14 +96,14 @@ class QuestionController extends Controller
                 return [
                     'count' => $group->count(),
                     //'correct' => $group->first()->option->correct,
-                    'correct' => $firstOption->correct ?? 0,
+                    'correct' => $group->first()->option->correct ?? 0,
                 ];
             });
 
         $labels = $optionsData->keys()->all();
         $data = $optionsData->pluck('count')->all();
         $backgroundColors = $optionsData->map(function ($item) {
-            return $item['correct'] ? '#4CAF50' : '#F44336';
+            return $item['correct'] == 0 ? '#F44336' : '#4CAF50';
         })->values()->all();
 
         return view('pages.answers', compact('question', 'labels', 'data', 'backgroundColors'));
