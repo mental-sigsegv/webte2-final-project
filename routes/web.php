@@ -81,6 +81,10 @@ Route::delete('/questions/delete/{questionId}',
     [QuestionController::class, 'deleteQuestion'])
     ->name('questions.delete')->middleware('auth');
 
+Route::post('/questions/duplicate/{questionId}',
+    [QuestionController::class, 'duplicateQuestion'])
+    ->name('questions.duplicate');
+
 Route::patch('/questions/update/{questionId}',
     [QuestionController::class, 'updateQuestion'])
     ->name('questions.update')->middleware('auth');

@@ -17,4 +17,5 @@ return [
     'update_question' => 'Update question',
     'delete' => 'Delete question',
     'show_answers' => 'Show answers',
+    'duplicate' => 'Duplicate',
 ];

@@ -70,6 +70,17 @@ class QuestionController extends Controller
         }
     }
 
+    public function duplicateQuestion($questionId)
+    {
+        $question = Question::find($questionId);
+        if ($question) {
+            $newQuestion = $question->replicate();
+            $newQuestion->code = fake()->unique()->regexify('[A-Za-z0-9]{5}');
+            $newQuestion->save();
+        }
+        return back();
+    }
+
     private function getAllDataAboutQuestions($whereClause)
     {
         return Question::with('user', 'subject')

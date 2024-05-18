@@ -17,4 +17,5 @@ return [
     'update_question' => 'Upraviť otázku',
     'delete' => 'Vymazať otázku',
     'show_answers' => 'Zobraziť odpovede',
+    'duplicate' => 'Duplikovať',
 ];

@@ -71,6 +71,13 @@ class QuestionsTable extends DataTableComponent
                         'questionId' => $row->id,
                     ])
                 ),
+            Column::make(__('question.duplicate'))
+                ->label(
+                    fn ($row, Column $column) => view('livewire.duplicate-question')->with(
+                        [
+                            'questionId' => $row->id,
+                        ])
+                ),
             Column::make(__('question.show_answers'))
                 ->label(
                     fn ($row, Column $column) => view('livewire.show-answers')->with(
