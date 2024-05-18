@@ -25,7 +25,7 @@ class EditQuestionForm extends ModalComponent
 
     public function save()
     {
-        $validatedData = $this->validate([
+        $this->validate([
             'question' => 'required|string|max:255',
             'subject_name' => 'required|string|max:255',
             'active' => 'required|boolean',
@@ -42,8 +42,9 @@ class EditQuestionForm extends ModalComponent
                 'name' => $this->subject_name,
             ]);
         }
+        $this->closeModal();
 
-        session()->flash('message', 'Question updated successfully.');
+        return redirect(request()->header('Referer'));
     }
 
     public function render()
