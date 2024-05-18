@@ -42,6 +42,8 @@ class UserDatatable extends DataTableComponent
             Column::make(__('user.login'), "login")
                 ->sortable()
                 ->searchable(),
+            Column::make(__('user.role'), "role")
+                ->sortable(),
             Column::make(__('user.created_at'), "created_at")
                 ->sortable(),
             Column::make(__('user.updated_at'), "updated_at")

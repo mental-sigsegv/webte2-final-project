@@ -12,6 +12,7 @@ return [
     'register' => 'Register',
     'logout' => 'Logout',
     'reset-password' => 'Reset password',
+    'change-credentials' => 'Change credentials',
     'admin' => 'Admin',
     'answers' => 'Answers',
 ];

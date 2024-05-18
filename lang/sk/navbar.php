@@ -12,6 +12,8 @@ return [
     'register' => 'Registrovať sa',
     'logout' => 'Odhlásiť sa',
     'reset-password' => 'Zmena hesla',
+    'change-credentials' => 'Zmena údajov',
     'admin' => 'Administrátor',
     'answers' => 'Odpovede',
+    'name' => 'Meno'
 ];

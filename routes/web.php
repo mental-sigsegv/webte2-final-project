@@ -63,6 +63,8 @@ Route::get('/reset_password', function () {
 
 Route::post('/reset_password', [UserController::class, 'resetPassword']);
 
+Route::post('/updateCredentials', [UserController::class, 'updateCredentials'])->name('updateCredentials');
+
 Route::middleware(['auth', Admin::class])->get('/admin', function () {
     return view('pages.admin');
 });

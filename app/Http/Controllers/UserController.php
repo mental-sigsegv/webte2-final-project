@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Auth\Authenticatable;
+use App\Enums\Roles;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Enum;
 
 class UserController extends Controller
 {
@@ -42,6 +43,24 @@ class UserController extends Controller
         ]);
 
         return redirect('/login');
+    }
+
+    public function updateCredentials(Request $request) {
+
+        $validated = $request->validate([
+            'new_name' => 'required|string|max:255',
+            'new_login' => 'required|string|max:255',
+            'new_role' => ['required', new Enum(Roles::class)],
+        ]);
+
+        // Find the user and update their credentials
+        User::find($request->user_id)->update([
+            'name' => $validated['new_name'],
+            'login' => $validated['new_login'],
+            'role' => $validated['new_role'],
+        ]);
+
+        return back();
     }
 
     public function logoutUser(Request $request) {
