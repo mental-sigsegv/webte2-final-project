@@ -9,7 +9,7 @@
         >
         <button
             type="submit"
-            class="w-full px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-gray-800"
+            class="w-full px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
         >
             Save
         </button>
