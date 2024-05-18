@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\ManualController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\UserController;
@@ -49,6 +50,9 @@ Route::get('/logout', [UserController::class, 'logoutUser']);
 
 Route::post('/questions/{id}/setActive', [QuestionController::class, 'setActive'])->name('questions.setActive');
 
+Route::get('/manual/download', [ManualController::class, 'downloadPdf'])->name('manual.download');
+
+
 if (App::environment('local')) {
     Route::get('/token', [TokenController::class, 'getToken']);
 }
@@ -87,7 +91,7 @@ Route::get('/question/{code}/result',
 
 
 Route::get('/manual', function () {
-    return view('pages.coming-soon');
+    return view('pages.manual');
 });
 
 Route::get('/change-language/{language}', [LanguageController::class, 'changeLanguage'])->name('change-language');
