@@ -47,6 +47,11 @@ class Question extends Model
         return $this->hasMany(Option::class, 'question_code', 'code');
     }
 
+    public function questionActiveIntervals(): HasMany
+    {
+        return $this->hasMany(QuestionActiveInterval::class, 'question_code', 'code');
+    }
+
 
     // Method to find a question by its code
     public static function findByCode($code): Model|Builder|Question

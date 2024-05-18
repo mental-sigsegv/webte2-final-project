@@ -10,5 +10,6 @@ class QuestionActiveInterval extends Model
     protected $fillable = [
         'question_code',
         'active_from',
+        'active_to',
     ];
 }

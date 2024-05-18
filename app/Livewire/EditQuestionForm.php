@@ -38,13 +38,30 @@ class EditQuestionForm extends ModalComponent
         if($question->answers()->count() == 0) {
             $question->update([
                 'question' => $this->question,
-                'active' => $this->active ? 1 : 0,
             ]);
 
             $question->subject()->update([
                 'name' => $this->subject_name,
             ]);
         }
+        $activeStatus = $this->active ? 1 : 0;
+
+        if ($activeStatus == 0) {
+            $activeInterval = $question->questionActiveIntervals()
+                ->whereNull('active_to')
+                ->first();
+
+            if ($activeInterval) {
+                $activeInterval->update(['active_to' => now()]);
+            }
+        } else {
+            $question->questionActiveIntervals()->create([
+                'active_from' => now(),
+                'active_to' => null,
+            ]);
+        }
+        $question->update(['active' => $activeStatus]);
+
         $this->closeModal();
 
         return redirect(request()->header('Referer'));
