@@ -20,7 +20,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'login' => fake()->unique()->name(),
-            'password' => Hash::make('password'),
+            'password' => 'password',
         ];
     }
 }
