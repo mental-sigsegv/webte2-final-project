@@ -13,6 +13,10 @@ class QuestionsTable extends DataTableComponent
 {
     protected $model = Question::class;
 
+    protected $listeners = [
+        'refreshParent' => '$refresh',
+    ];
+
     public function configure(): void
     {
         $this->setPrimaryKey('id');

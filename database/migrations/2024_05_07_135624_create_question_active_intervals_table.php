@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('question_code',5);
             $table->foreign('question_code')->references('code')->on('questions')->onDelete('cascade');
+            $table->string('note')->nullable()->default(null);
             $table->timestamp('active_from')->nullable(false);
             $table->timestamp('active_to')->nullable();
             $table->timestamps();

@@ -11,10 +11,13 @@ class EditQuestionForm extends ModalComponent
     public $question;
     public $subject_name;
     public $active;
+    public $note;
     public $questionId;
+    public $questionActive;
+    public $activeInterval;
 
     protected $casts = [
-        'active' => 'boolean',
+        'active' => 'int',
     ];
     public function mount($questionId)
     {
@@ -23,7 +26,12 @@ class EditQuestionForm extends ModalComponent
         $this->question = $question->question;
         $this->subject_name = $question->subject->name;
         $this->active = $question->active == 1;
+        $this->questionActive = $this->active;
         $this->questionId = $question->id;
+        $this->activeInterval = $question->questionActiveIntervals()
+            ->latest()
+            ->first();
+        $this->note = $this->activeInterval->note;
     }
 
     public function save()
@@ -32,6 +40,7 @@ class EditQuestionForm extends ModalComponent
             'question' => 'required|string|max:255',
             'subject_name' => 'required|string|max:255',
             'active' => 'required|boolean',
+            'note' => 'max:255'
         ]);
 
         $question = Question::findOrFail($this->questionId);
@@ -44,27 +53,25 @@ class EditQuestionForm extends ModalComponent
                 'name' => $this->subject_name,
             ]);
         }
-        $activeStatus = $this->active ? 1 : 0;
 
-        if ($activeStatus == 0) {
-            $activeInterval = $question->questionActiveIntervals()
-                ->whereNull('active_to')
-                ->first();
+        $this->activeInterval->update(['note' => $this->note]);
 
-            if ($activeInterval) {
-                $activeInterval->update(['active_to' => now()]);
-            }
-        } else {
+        if (($this->questionActive != $this->active) && ($this->active == 0)) {
+            $this->activeInterval->update(array('active_to' => now()));
+        } else if (($this->questionActive != $this->active) && ($this->active == 1)) {
             $question->questionActiveIntervals()->create([
                 'active_from' => now(),
                 'active_to' => null,
             ]);
         }
-        $question->update(['active' => $activeStatus]);
+        $question->update(['active' => $this->active]);
+        $this->activeInterval->update(['note' => $this->note]);
 
         $this->closeModal();
 
-        return redirect(request()->header('Referer'));
+        $this->dispatch('refreshParent');
+
+//        return redirect(request()->header('Referer'));
     }
 
     public function render()

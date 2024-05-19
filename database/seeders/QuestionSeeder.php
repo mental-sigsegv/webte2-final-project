@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Question;
+use App\Models\QuestionActiveInterval;
 use App\Models\Subject;
 use App\Models\Option;
 use App\Models\User;
@@ -27,11 +28,23 @@ class QuestionSeeder extends Seeder
             Option::factory(5)->create([
                 'question_code' => $question->code,
             ]);
+
+            QuestionActiveInterval::create([
+                'question_code' => $question->code,
+                'active_from' => $question->created_at
+            ]);
         }
 
-        Question::factory(5)->create([
+        $questions = Question::factory(5)->create([
             'active' => true,
             'open' => true
         ]);
+
+        foreach ($questions as $question) {
+            QuestionActiveInterval::create([
+                'question_code' => $question->code,
+                'active_from' => $question->created_at
+            ]);
+        }
     }
 }

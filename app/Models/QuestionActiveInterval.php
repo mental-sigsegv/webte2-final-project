@@ -11,5 +11,6 @@ class QuestionActiveInterval extends Model
         'question_code',
         'active_from',
         'active_to',
+        'note'
     ];
 }
