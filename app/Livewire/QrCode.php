@@ -7,12 +7,10 @@ use LivewireUI\Modal\ModalComponent;
 class QrCode extends ModalComponent
 {
     public $url;
-    public $code;
 
-    public function mount($url, $code)
+    public function mount($url)
     {
         $this->url = $url;
-        $this->code = $code;
     }
 
     public function render()
