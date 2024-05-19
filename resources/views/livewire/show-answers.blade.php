@@ -1,3 +1,4 @@
+<div class="flex justify-center items-center">
 <form method="GET" action="{{ route('answers', ['code' => $code]) }}">
     @csrf
     @method('GET')
@@ -8,3 +9,4 @@
         </svg>
     </button>
 </form>
+</div>

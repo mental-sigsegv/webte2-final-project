@@ -33,6 +33,11 @@
             <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
                 <h2 class="text-2xl font-bold mb-2">{{ __('manual.results_display') }}</h2>
                 <p>{{ __('manual.results_display_description') }}</p>
+                <ul class="list-disc list-inside pl-6">
+                    @foreach(__('manual.results_display_methods') as $desc)
+                        <li>{{ $desc }}</li>
+                    @endforeach
+                </ul>
             </div>
             <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
                 <h2 class="text-2xl font-bold mb-2">{{ __('manual.question_editing') }}</h2>
@@ -44,10 +49,10 @@
             </div>
             <div class="bg-gray-800 border border-gray-300 rounded-lg p-4">
                 <h2 class="text-2xl font-bold mb-2">{{ __('manual.export_questions') }}</h2>
-                <p>{{ __('manual.export_questions_description') }}</p>
+                <p><li>{{ __('manual.export_questions_description') }}</li></p>
                 <p>
                     @foreach(__('manual.admin_description') as $desc)
-                        {{ $desc }}<br>
+                        <li>{{ $desc }}<br></li>
                     @endforeach
                 </p>
             </div>
