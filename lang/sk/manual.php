@@ -43,4 +43,4 @@ return [
     ],
     'completing_poll' => 'Vyplnenie hlasovacej otázky:',
     'completing_poll_description' => 'Po vyplnení hlasovacej otázky bude užívateľ presmerovaný na stránku s grafickým zobrazením výsledkov hlasovania na danú otázku.',
-];
+    ];
