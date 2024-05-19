@@ -1,3 +1,4 @@
+<div class="flex justify-center items-center">
 <form method="POST" action="{{ route('questions.delete', $questionId) }}">
     @csrf
     @method('DELETE')
@@ -9,3 +10,4 @@
         </svg>
     </button>
 </form>
+</div>

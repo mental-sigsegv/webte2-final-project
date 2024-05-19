@@ -18,7 +18,11 @@ return [
         '2' => 'Otázky s otvorenou krátkou odpoveďou.',
     ],
     'results_display' => 'Zobrazenie výsledkov:',
-    'results_display_description' => 'Výsledky je možné zobraziť pre otázky.',
+    'results_display_description' =>'Výsledky je možné zobraziť pre všetky otázky.',
+    'results_display_methods' => [
+        '1' => 'Pre otázky s výberom správnych odpovedí sa zobrazí graf.',
+        '2' => 'Pre otázky s otvorenou krátkou odpoveďou sa zobrazia odpovede.',
+    ],
     'question_editing' => 'Úprava otázok:',
     'question_editing_description' => 'Používatelia môžu upravovať, či je otázka aktívna, meniť predmet a znenie otázky, a mazať existujúce otázky.',
     'question_filtering' => 'Filtrovanie otázok:',
