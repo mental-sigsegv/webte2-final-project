@@ -125,6 +125,10 @@ class QuestionController extends Controller
                     ];
                 });
 
+            $answersData = Answer::where('question_code', $code)
+                ->whereBetween("created_at", [$a_from, $a_to])
+                ->get();
+
             $labels = $optionsData->keys()->all();
             $data = $optionsData->pluck('count')->all();
             $backgroundColors = $optionsData->map(function ($item) {
@@ -132,9 +136,8 @@ class QuestionController extends Controller
             })->values()->all();
 
 
-            $question_intervals_data[] = compact('question', 'labels', 'data', 'backgroundColors', 'a_from', 'a_to', 'note');
+            $question_intervals_data[] = compact('question', 'labels', 'data', 'backgroundColors', 'a_from', 'a_to', 'note', 'answersData');
         }
-
 
         return view('pages.answers', ['question_intervals_data' => $question_intervals_data]);
     }

@@ -1,6 +1,5 @@
 <x-layouts.app title="{{ __('navbar.answers') }}">
     @foreach($question_intervals_data as $data)
-{{--        {{dd($question_intervals_data)}}--}}
         <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg text-white mt-10">
             <h1 class="text-4xl font-bold mb-6">{{ __('message.question') }}: {{ $data['question']->question }}</h1>
 
@@ -62,7 +61,21 @@
             @else
                 <h2 class="text-2xl font-semibold mb-4">{{ __('navbar.answers') }}:</h2>
                 <ul class="space-y-4">
-                    @forelse ($question->answers as $answer)
+                    <p>
+                        FROM: {{ $data['a_from'] }}
+                    </p>
+
+                    <p>
+                        TO: {{ $data['a_to'] }}
+                    </p>
+
+                    @if($data['note'])
+                        <p>
+                            NOTE: {{ $data['note'] }}
+                        </p>
+                    @endif
+
+                    @forelse ($data['answersData'] as $answer)
                         <li class="bg-gray-700 p-4 rounded-md">
                             <p>{{ $answer->answer }}</p>
                             <span
