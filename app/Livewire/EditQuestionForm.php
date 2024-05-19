@@ -40,7 +40,6 @@ class EditQuestionForm extends ModalComponent
             'question' => 'required|string|max:255',
             'subject_name' => 'required|string|max:255',
             'active' => 'required|boolean',
-            'note' => 'max:255'
         ]);
 
         $question = Question::findOrFail($this->questionId);
@@ -70,8 +69,6 @@ class EditQuestionForm extends ModalComponent
         $this->closeModal();
 
         $this->dispatch('refreshParent');
-
-//        return redirect(request()->header('Referer'));
     }
 
     public function render()
