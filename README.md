@@ -4,59 +4,18 @@
 Create an online voting system application for use during lectures. Ensure a well-designed graphical interface, intuitive navigation, and robust security measures.
 
 
-## Roadmap
-
-- [x] Version Control System (GIT)
-
-- [ ] Multilanguage (EN, SK)
-
-- [ ] Responsive
-
-- [ ] Authentication
-    - [ ] Login
-    - [ ] Logout
-    - [ ] Register
-    - [ ] Change password
-
-- [ ] Roles
-    - [ ] Unauthenticated user
-    - [ ] Authenticated user
-    - [ ] Admin
-
-- [ ] User manual
-    - [ ] Export to PDF
-
-- [ ] A video documenting the entire functionality
-
-- [ ] Create poll
-
-TODO
 ## Run Locally
 
 - Install Ubuntu 22.04.3 LTS
 
+---
 
 - Update ubuntu
 ```bash
   sudo apt-get update
 ```
 
-- Download php8
-```bash
-  sudo apt install php8.1-cli
-```
-```bash
-  sudo apt install php-curl -y
-```
-```bash
-  sudo apt install php-xml -y
-```
-```bash
-  sudo apt install php-zip -y
-```
-```bash
-  sudo apt install php-gd -y
-```
+---
 
 - Clone the project (you could use IDE / https clone / ssh clone)
 
@@ -64,16 +23,15 @@ TODO
   git clone https://github.com/mental-sigsegv/webte2-final-project
 ```
 
+---
+
 - Go to the project directory
 
 ```bash
   cd webte2
 ```
 
-- NPM
-```bash
-  sudo apt-get install npm 
-```
+---
 
 - Checkout dev branch
 
@@ -81,17 +39,17 @@ TODO
   git checkout dev
 ```
 
-- Create .env file in root dir
+---
 
+- Create .env file in root dir (based on .env example)
+
+---
 
 - Composer
 
 ```bash
-  composer update
+  composer install
 ```
-
----
-
 
 ## Docker
 
@@ -100,6 +58,8 @@ TODO
 ```bash
   sudo nano ~/.bashrc 
 ```
+
+---
 
 - Append to end of file
 > alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'" >> ~/.bashrc
@@ -129,63 +89,21 @@ Shell Docker
 [phpMyAdmin](http://localhost:8080)
 
 
-#### Get all items
-
-```http
-  GET /api/items
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
-
-#### Get item
-
-```http
-  GET /api/items/${id}
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
-
-#### add(num1, num2)
-
-Takes two numbers and returns the sum.
-
-
-## Deployment
-
-To deploy this project run
-
-```bash
-  npm run deploy
-```
-
-
 ## Authors
 
-- [@octokatherine](https://www.github.com/octokatherine)
+- Backend
+  - Martin Klacik [@mental-sigsegv](https://github.com/mental-sigsegv)
+  - Erik Póczoš [@ErikPoczos](https://github.com/ErikPoczos)
+  - Ján Demeter [@jandemeter](https://github.com/jandemeter)
+  
+
+- Frontend
+  - Slavomír Tung Le Minh [@slavkoleminh](https://github.com/slavkoleminh)
 
 
-## Docker
+## Used Technologies
 
-Run once for storing alias
+Backend : Laravel 11
+Frontend : Livewire 3, Tailwind
 
-```bash
-echo "alias sail='sh \$([ -f sail ] && echo sail || echo vendor/bin/sail)'" >> ~/.bashrc
-```
-
-Run Docker
-
-```bash
-sail up -d --remove-orphans
-```
-
-Stop Docker
-
-```bash
-sail down
-```
-
-## Cache
+Others defined in composer.json and package.json
