@@ -4,22 +4,27 @@
             <h1 class="text-4xl font-bold mb-6">{{ __('message.question') }}: {{ $data['question']->question }}</h1>
 
             @if ($data['question']->open == 0)
-                <h2 class="text-2xl font-semibold mb-4">{{ __('navbar.answers') }}:</h2>
+                <div class="flex justify-center space-x-4 mb-8">
+                    <div class="bg-white p-2 rounded-md shadow-md w-full max-w-s">
+                        <p class="text-center text-lg text-gray-700"><span
+                                class="font-bold">FROM:</span> {{ $data['a_from'] }}</p>
+                    </div>
+                    <div class="bg-white p-2 rounded-md shadow-md w-full max-w-xs">
+                        <p class="text-center text-lg text-gray-700"><span
+                                class="font-bold">TO:</span> {{ $data['a_to'] }}</p>
+                    </div>
+                </div>
 
-                <p>
-                    FROM: {{ $data['a_from'] }}
-                </p>
-
-                <p>
-                   TO: {{ $data['a_to'] }}
-                </p>
 
                 @if($data['note'])
-                    <p>
-                        NOTE: {{ $data['note'] }}
-                    </p>
+                    <div class="bg-white p-2 rounded-md shadow-md mb-4">
+                        <p class="text-center text-lg text-gray-700"><span
+                                class="font-bold">NOTE:</span> {{ $data['note'] }}</p>
+                    </div>
+
                 @endif
 
+                <h2 class="text-3xl font-semibold text-white mb-6">{{ __('navbar.answers') }}:</h2>
 
                 <div class="flex justify-center items-center h-80 w-full">
                     <canvas id="answerChart-{{$data['a_from']}}"></canvas>
@@ -59,23 +64,29 @@
                     });
                 </script>
             @else
-                <h2 class="text-2xl font-semibold mb-4">{{ __('navbar.answers') }}:</h2>
                 <ul class="space-y-4">
-                    <p>
-                        FROM: {{ $data['a_from'] }}
-                    </p>
+                    <div class="flex justify-center space-x-4 mb-8">
+                        <div class="bg-white p-2 rounded-md shadow-md w-full max-w-s">
+                            <p class="text-center text-lg text-gray-700"><span
+                                    class="font-bold">FROM:</span> {{ $data['a_from'] }}</p>
+                        </div>
+                        <div class="bg-white p-2 rounded-md shadow-md w-full max-w-xs">
+                            <p class="text-center text-lg text-gray-700"><span
+                                    class="font-bold">TO:</span> {{ $data['a_to'] }}</p>
+                        </div>
+                    </div>
 
-                    <p>
-                        TO: {{ $data['a_to'] }}
-                    </p>
 
                     @if($data['note'])
-                        <p>
-                            NOTE: {{ $data['note'] }}
-                        </p>
+                        <div class="bg-white p-2 rounded-md shadow-md mb-4">
+                            <p class="text-center text-lg text-gray-700"><span
+                                    class="font-bold">NOTE:</span> {{ $data['note'] }}</p>
+                        </div>
                     @endif
 
-                    @forelse ($data['answersData'] as $answer)
+                    <h2 class="text-2xl font-semibold mb-4">{{ __('navbar.answers') }}:</h2>
+
+                @forelse ($data['answersData'] as $answer)
                         <li class="bg-gray-700 p-4 rounded-md">
                             <p>{{ $answer->answer }}</p>
                             <span

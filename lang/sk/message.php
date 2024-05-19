@@ -17,6 +17,6 @@ return [
     'save' => 'Uložiť',
     'option' => 'Možnosť',
     'options' => 'Možnosti',
-    'correct' => 'Správnosť',
+    'correct' => 'Správna odpoveď',
     'remove' => 'Odstrániť',
 ];
