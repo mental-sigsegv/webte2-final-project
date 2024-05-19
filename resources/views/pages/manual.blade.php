@@ -1,4 +1,13 @@
 <x-layouts.app>
+    <style>
+        @font-face {
+            font-family: 'DejaVu Sans';
+            src: url('{{ public_path('fonts/DejaVuSans.ttf') }}') format('truetype');
+        }
+        body {
+            font-family: 'DejaVu Sans', sans-serif;
+        }
+    </style>
     <div class="container mx-auto p-6">
         <button onclick="window.location.href='{{ route('manual.download') }}'"
                 class="download-button bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
