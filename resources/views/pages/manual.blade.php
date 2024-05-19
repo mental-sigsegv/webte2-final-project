@@ -1,10 +1,10 @@
-<x-layouts.app>
+<x-layouts.app title="{{ __('navbar.manual') }}">
     <style>
         @font-face {
             font-family: 'DejaVu Sans';
             src: url('{{ public_path('fonts/DejaVuSans.ttf') }}') format('truetype');
         }
-        body {
+        .container {
             font-family: 'DejaVu Sans', sans-serif;
         }
     </style>
