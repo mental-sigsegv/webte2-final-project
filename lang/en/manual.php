@@ -1,6 +1,5 @@
 <?php
 
-
 return [
     'download_pdf' => 'Download as PDF',
     'login' => 'Login:',
@@ -20,6 +19,10 @@ return [
     ],
     'results_display' => 'Results Display:',
     'results_display_description' => 'Results can be displayed for questions.',
+    'results_display_methods' => [
+        '1' => 'For multiple choice questions, a graph will be displayed.',
+        '2' => 'For open-ended short answer questions, the answers will be displayed.',
+    ],
     'question_editing' => 'Question Editing:',
     'question_editing_description' => 'Users can edit whether the question is active, change the subject and wording of the question, and delete existing questions.',
     'question_filtering' => 'Question Filtering:',

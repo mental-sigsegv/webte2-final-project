@@ -12,4 +12,5 @@ return [
     'dont-have-acc' => 'Nemáte konto?',
     'have-acc' => 'Už máte konto?',
     'name' => 'Meno',
+    'role' => 'Rola',
 ];

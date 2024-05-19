@@ -38,7 +38,7 @@ class QuestionsTable extends DataTableComponent
     {
         return [
             Column::make("Id", "id")->hideIf(true),
-            Column::make("User", "user.name")
+            Column::make(__('question.user'), "user.name")
                 ->sortable()->searchable(),
             Column::make(__('question.question'), "question")
                 ->sortable()->searchable(),

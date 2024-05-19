@@ -11,4 +11,5 @@ return [
     'dont-have-acc' => 'Don\'t have an account?',
     'have-acc' => 'Already have an account?',
     'name' => 'Name',
-];
+    'role' => 'Role',
+    ];

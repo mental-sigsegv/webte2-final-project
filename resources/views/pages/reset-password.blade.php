@@ -1,16 +1,16 @@
 <x-layouts.app title="{{ __('navbar.reset-password') }}">
     <section>
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div class="flex flex-col items-center justify-center px-6 py-8">
+            <div class="w-full bg-gray-800 rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                    <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                    <h1 class="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl">
                         {{ __('navbar.reset-password') }}
                     </h1>
                     <form class="space-y-4 md:space-y-6" action="/reset_password" method="POST">
                         @csrf
                         <div>
-                            <label for="new_password" class="@error('password') is-invalid @enderror block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('auth.password') }}</label>
-                            <input type="password" name="new_password" id="new_password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                            <label for="new_password" class="@error('password') is-invalid @enderror block mb-2 text-sm font-medium text-white">{{ __('auth.password') }}</label>
+                            <input type="password" name="new_password" id="new_password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-800 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
 
                             @error('new_password')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -18,15 +18,15 @@
                         </div>
 
                         <div>
-                            <label for="new_password_confirmation" class="@error('password') is-invalid @enderror block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('auth.confirm-password') }}</label>
-                            <input type="password" name="new_password_confirmation" id="new_password_confirmation" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                            <label for="new_password_confirmation" class="@error('password') is-invalid @enderror block mb-2 text-sm font-medium text-white">{{ __('auth.confirm-password') }}</label>
+                            <input type="password" name="new_password_confirmation" id="new_password_confirmation" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-800 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
 
                             @error('new_password_confirmation')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <button type="submit" class="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">{{ __('navbar.reset-password') }}</button>
+                        <button type="submit" class="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">{{ __('navbar.reset-password') }}</button>
                     </form>
                 </div>
             </div>

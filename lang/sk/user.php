@@ -9,4 +9,5 @@ return [
     'created_at' => 'Vytvorený',
     'updated_at' => 'Upravený',
     'action' => 'Akcie',
+    'description' => 'Práve meníte heslo pre používateľa s ID:'
 ];
