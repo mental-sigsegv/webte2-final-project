@@ -15,6 +15,12 @@
                    TO: {{ $data['a_to'] }}
                 </p>
 
+                @if($data['note'])
+                    <p>
+                        NOTE: {{ $data['note'] }}
+                    </p>
+                @endif
+
 
                 <div class="flex justify-center items-center h-80 w-full">
                     <canvas id="answerChart-{{$data['a_from']}}"></canvas>

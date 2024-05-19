@@ -112,6 +112,7 @@ class QuestionController extends Controller
 
             $a_from = $question_interval->active_from;
             $a_to = $question_interval->active_to == null ? now() : $question_interval->active_to;
+            $note = $question_interval->note;
 
             $optionsData = Answer::where('question_code', $code)
                 ->whereBetween("created_at", [$a_from, $a_to])
@@ -119,9 +120,7 @@ class QuestionController extends Controller
                 ->groupBy('option.option')
                 ->map(function ($group) {
                     return [
-
                         'count' => $group->count(),
-                        //'correct' => $group->first()->option->correct,
                         'correct' => $group->first()->option->correct ?? 0,
                     ];
                 });
@@ -133,8 +132,7 @@ class QuestionController extends Controller
             })->values()->all();
 
 
-            $question_intervals_data[] = compact('question', 'labels', 'data', 'backgroundColors', 'a_from', 'a_to');
-//            dd(compact('question', 'labels', 'data', 'backgroundColors'));
+            $question_intervals_data[] = compact('question', 'labels', 'data', 'backgroundColors', 'a_from', 'a_to', 'note');
         }
 
 
