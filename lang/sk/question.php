@@ -23,4 +23,5 @@ return [
     'show_answers' => 'Zobraziť odpovede',
     'duplicate' => 'Duplikovať',
     'enter_answer' => 'Zadaj odpoveď',
+    'select_user' => 'Vyber používateľa',
 ];

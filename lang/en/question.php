@@ -23,4 +23,5 @@ return [
     'show_answers' => 'Show answers',
     'duplicate' => 'Duplicate',
     'enter_answer' => 'Enter answer',
+    'select_user' => 'Select user',
 ];

@@ -11,15 +11,15 @@
         </div>
         @auth
             @if(auth()->user()->isAdmin())
-                <div >
-                    <label for="user" >Select User</label>
-                    <select id="user" wire:model="selectedUser" >
-                        <option value="">Select User</option>
+                <div class="mb-3">
+                    <select id="user" wire:model="selectedUser" class="p-1 block w-full mt-1 bg-white text-gray-800 border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <option value=""> {{ __('question.select_user') }}</option>
                         @foreach($users as $user)
                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                         @endforeach
                     </select>
                 </div>
+
             @endif
         @endauth
         <div class="flex flex-col space-y-4">
