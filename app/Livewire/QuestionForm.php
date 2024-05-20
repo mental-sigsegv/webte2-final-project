@@ -6,6 +6,7 @@ use App\Models\Option;
 use App\Models\Question;
 use App\Models\QuestionActiveInterval;
 use App\Models\Subject;
+use App\Models\User;
 use Illuminate\Support\Facades\Http;
 use JetBrains\PhpStorm\NoReturn;
 use Livewire\Attributes\Validate;
@@ -24,6 +25,8 @@ class QuestionForm extends Component
     #[Validate('required')]
     public $options = [];
 
+    public $users;
+    public $selectedUser;
     #[NoReturn] public function save(): void
     {
 
@@ -33,7 +36,7 @@ class QuestionForm extends Component
 
         $question = Question::create([
             'code' => fake()->unique()->regexify('[A-Za-z0-9]{5}'),
-            'user_id' => auth()->id(),
+            'user_id' => $this->selectedUser ?? auth()->id(),
             'subject_id' => $subject->id,
             'question' => $this->question,
             'open' => $this->question_type,
@@ -87,5 +90,9 @@ class QuestionForm extends Component
     public function render()
     {
         return view('livewire.question-form');
+    }
+
+    public function mount() {
+        $this->users = User::all();
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Question;
-use App\Models\User;
+use App\Models\QuestionActiveInterval;
+use App\Models\Option;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
@@ -26,7 +28,8 @@ class QuestionController extends Controller
         ]);
     }
 
-    public function deleteQuestion($questionId){
+    public function deleteQuestion($questionId)
+    {
 
         $user = Auth::user();
         $userId = $user->id;
@@ -99,24 +102,44 @@ class QuestionController extends Controller
 
     public function viewAnswers($code)
     {
-        $question = Question::with('answers.option')->where('code', $code)->firstOrFail();
+        $question_intervals = QuestionActiveInterval::where('question_code', $code)->latest()->get();
+        $question_intervals_data = [];
 
-        $optionsData = $question->answers
-            ->groupBy('option.option')
-            ->map(function ($group) {
-                return [
-                    'count' => $group->count(),
-                    //'correct' => $group->first()->option->correct,
-                    'correct' => $group->first()->option->correct ?? 0,
-                ];
-            });
-        $labels = $optionsData->keys()->all();
-        $data = $optionsData->pluck('count')->all();
-        $backgroundColors = $optionsData->map(function ($item) {
-            return $item['correct'] == 0 ? '#F44336' : '#4CAF50';
-        })->values()->all();
+        foreach ($question_intervals as $question_interval) {
+            $question = Question::with('answers.option')
+                ->where('code', $code)
+                ->firstOrFail();
 
-        return view('pages.answers', compact('question', 'labels', 'data', 'backgroundColors'));
+            $a_from = $question_interval->active_from;
+            $a_to = $question_interval->active_to == null ? now() : $question_interval->active_to;
+            $note = $question_interval->note;
+
+            $optionsData = Answer::where('question_code', $code)
+                ->whereBetween("created_at", [$a_from, $a_to])
+                ->get()
+                ->groupBy('option.option')
+                ->map(function ($group) {
+                    return [
+                        'count' => $group->count(),
+                        'correct' => $group->first()->option->correct ?? 0,
+                    ];
+                });
+
+            $answersData = Answer::where('question_code', $code)
+                ->whereBetween("created_at", [$a_from, $a_to])
+                ->get();
+
+            $labels = $optionsData->keys()->all();
+            $data = $optionsData->pluck('count')->all();
+            $backgroundColors = $optionsData->map(function ($item) {
+                return $item['correct'] == 0 ? '#F44336' : '#4CAF50';
+            })->values()->all();
+
+
+            $question_intervals_data[] = compact('question', 'labels', 'data', 'backgroundColors', 'a_from', 'a_to', 'note', 'answersData');
+        }
+
+        return view('pages.answers', ['question_intervals_data' => $question_intervals_data]);
     }
 
 
@@ -126,7 +149,7 @@ class QuestionController extends Controller
         $questions = Question::with(['options', 'answers.option'])->get();
 
         // Convert questions to JSON
-        $json = $questions->map(function($question) {
+        $json = $questions->map(function ($question) {
             return [
                 'question' => $question->question,
                 'code' => $question->code,
@@ -135,13 +158,13 @@ class QuestionController extends Controller
                 'active' => $question->active,
                 'open' => $question->open,
                 'subject' => $question->subject->name ?? null,
-                'options' => $question->options->map(function($option) {
+                'options' => $question->options->map(function ($option) {
                     return [
                         'option' => $option->option,
                         'correct' => $option->correct,
                     ];
                 }),
-                'answers' => $question->answers->map(function($answer) use ($question) {
+                'answers' => $question->answers->map(function ($answer) use ($question) {
                     return [
                         'answer' => $question->open == 1 ? $answer->answer : $answer->option->option,
                         'correct' => $question->open == 1 ? null : $answer->option->correct,

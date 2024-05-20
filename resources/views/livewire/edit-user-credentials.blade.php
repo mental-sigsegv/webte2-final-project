@@ -48,7 +48,7 @@
 
                     <input type="hidden" name="user_id" value="{{ $id }}">
                     <button type="submit" class="w-full text-white bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                        {{ __('navbar.reset-password') }}
+                        {{ __('navbar.change-credentials') }}
                     </button>
                 </form>
 

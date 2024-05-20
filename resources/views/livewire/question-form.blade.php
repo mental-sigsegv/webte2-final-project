@@ -9,6 +9,19 @@
             <input type="text" wire:model="question" id="question" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-primary-600 peer" placeholder=" " required />
             <label for="question" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{{ __('message.question') }}</label>
         </div>
+        @auth
+            @if(auth()->user()->isAdmin())
+                <div class="mb-3">
+                    <select id="user" wire:model="selectedUser" class="p-1 block w-full mt-1 bg-white text-gray-800 border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <option value=""> {{ __('question.select_user') }}</option>
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+            @endif
+        @endauth
         <div class="flex flex-col space-y-4">
             <p>
                 {{ __('message.question-type') }}

@@ -17,34 +17,55 @@ class QuestionSeeder extends Seeder
      */
     public function run(): void
     {
-        Subject::factory(10)->create();
-
-        $questions = Question::factory(5)->create([
-            'active' => true,
-            'open' => false
+        $sbj = Subject::create([
+            'name' => 'LA2',
         ]);
 
-        foreach ($questions as $question) {
-            Option::factory(5)->create([
-                'question_code' => $question->code,
-            ]);
-
-            QuestionActiveInterval::create([
-                'question_code' => $question->code,
-                'active_from' => $question->created_at
-            ]);
-        }
-
-        $questions = Question::factory(5)->create([
-            'active' => true,
-            'open' => true
+        $question = Question::factory()->create([
+            'user_id' => User::first()->id,
+            'subject_id' => $sbj->id,
+            'open' => false,
+            'question' => "Spravím LA2 na RT?",
         ]);
 
-        foreach ($questions as $question) {
-            QuestionActiveInterval::create([
-                'question_code' => $question->code,
-                'active_from' => $question->created_at
-            ]);
-        }
+        Option::create([
+            'question_code' => $question->code,
+            'correct' => 1,
+            'option' => "Ano"
+        ]);
+
+        Option::create([
+            'question_code' => $question->code,
+            'correct' => 1,
+            'option' => "Mozno"
+        ]);
+
+        Option::create([
+            'question_code' => $question->code,
+            'correct' => 0,
+            'option' => "Nie"
+        ]);
+
+
+        QuestionActiveInterval::create([
+            'question_code' => $question->code,
+            'active_from' => $question->created_at
+        ]);
+
+        $sbj = Subject::create([
+            'name' => 'WEBTE2',
+        ]);
+
+        $question = Question::factory()->create([
+            'user_id' => User::first()->id,
+            'subject_id' => $sbj->id,
+            'open' => true,
+            'question' => "Kto je najlepší učiteľ predmetu WEBTE2?"
+        ]);
+
+        QuestionActiveInterval::create([
+            'question_code' => $question->code,
+            'active_from' => $question->created_at
+        ]);
     }
 }
