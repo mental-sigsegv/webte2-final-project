@@ -2,16 +2,27 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Question;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\App;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
-         \App\Models\User::factory(10)->create();
+        if (App::environment('local')) {
+            $this->call([
+                AdminSeeder::class,
+                UserSeeder::class,
+                QuestionSeeder::class,
+            ]);
+        }
+
+        $this->call([
+            Production::class,
+        ]);
     }
 }
