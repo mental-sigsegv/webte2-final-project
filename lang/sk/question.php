@@ -24,4 +24,6 @@ return [
     'duplicate' => 'Duplikovať',
     'enter_answer' => 'Zadaj odpoveď',
     'select_user' => 'Vyber používateľa',
+    'export' => 'Exportovať všetky otázky',
+
 ];
