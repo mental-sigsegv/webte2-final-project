@@ -16,14 +16,14 @@ class Production extends Seeder
         User::create([
             'name' => 'Admin User',
             'login' => 'ProductionAdmin',
-            'password' => 'C8Rc43Ze5m3t5ccP',
+            'password' => '',
             'role' => Roles::Admin,
         ]);
 
         User::create([
             'name' => 'User',
             'login' => 'ProductionUser',
-            'password' => 'C8Rc43Ze5m3t5ccP',
+            'password' => '',
             'role' => Roles::User,
         ]);
     }
