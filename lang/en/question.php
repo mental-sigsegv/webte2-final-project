@@ -24,4 +24,5 @@ return [
     'duplicate' => 'Duplicate',
     'enter_answer' => 'Enter answer',
     'select_user' => 'Select user',
+    'export' => 'Export all questions',
 ];
