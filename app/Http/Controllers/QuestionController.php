@@ -77,9 +77,20 @@ class QuestionController extends Controller
     {
         $question = Question::find($questionId);
         if ($question) {
-            $newQuestion = $question->replicate();
-            $newQuestion->code = fake()->unique()->regexify('[A-Za-z0-9]{5}');
+            $newQuestion = $question->replicate()->fill([
+                'code' => fake()->unique()->regexify('[A-Za-z0-9]{5}')
+            ]);
+
             $newQuestion->save();
+
+            $newActiveInterval = QuestionActiveInterval::create([
+                'question_code' => $newQuestion->code,
+                'question_id' => $newQuestion->id,
+                'active_from' => now(),
+                'note' => null
+            ]);
+
+            $newActiveInterval->save();
         }
         return back();
     }
